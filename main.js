@@ -1,3 +1,3 @@
-import UI from "./modules/ui.js";
+import UI from "../src/modules/ui.js";
 
 UI.setSubmitEventListener();
