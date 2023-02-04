@@ -2,20 +2,25 @@ import { getData } from "./fetch.js";
 
 export default class UI {
   static displayData(data) {
+    if (document.querySelector(".weather-container")) UI.clearScreen();
     UI.clearInput();
     UI.setBgImage(data.current.condition.code);
 
     let container = document.createElement("div");
     let header = document.querySelector(".location-header");
+    let location = document.querySelector(".location");
 
+    location.innerHTML = `
+    <h1 class="location glassify">${data.location.name} ${data.location.region}</h1>
+    `;
     header.innerHTML = `
-    <p class="heading">${data.location.name} ${data.location.region}</p> 
     <p class="small">Last Updated ${data.current.last_updated}</p>
     <p class="condition">${data.current.condition.text}</p>
     `;
-
+    document.querySelector(".main-container").append(location);
     document.querySelector(".main-container").append(container);
     container.classList.add("weather-container");
+    container.classList.add("glassify");
     container.innerHTML = `
     <div class="data">
       <p class="heading">Feels Like C</p><p>${data.current.feelslike_c}</p>
@@ -94,6 +99,11 @@ export default class UI {
     input.addEventListener("keypress", (e) => {
       if (e.key === "Enter") submit.click();
     });
+  }
+
+  static clearScreen() {
+    let weatherContainer = document.querySelector(".weather-container");
+    weatherContainer.outerHTML = "";
   }
 
   static setBgImage(weatherCode) {

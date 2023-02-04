@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+
 *,
 *:before,
 *:after {
@@ -10,6 +12,7 @@
 :root {
   /* colors */
   --soft-white-bg: rgba(255, 255, 255, 0.14);
+  --font-white: #fff;
 
   /* borders */
   --soft-white-border: 1px solid rgba(255, 255, 255, 0.18);
@@ -17,11 +20,16 @@
 
 body {
   height: 100vh;
+  font-family: "Rubik", sans-serif;
 }
 
 p {
   text-align: center;
-  color: white;
+  color: var(--font-white);
+}
+
+h1 {
+  font-size: 1.3rem;
 }
 
 .background {
@@ -42,7 +50,8 @@ p {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  z-index: 2;
+  position: relative;
 }
 
 .weather-container {
@@ -52,19 +61,25 @@ p {
   grid-auto-flow: row;
   justify-content: center;
   align-items: center;
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(8.8px);
-  -webkit-backdrop-filter: blur(8.8px);
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  z-index: 2;
+  padding: 1.2rem;
 }
 
 .heading {
-  font-weight: 600;
+  font-weight: 900;
   font-size: 1.2rem;
   margin-top: 5px;
-  color: white;
+  color: var(--font-white);
+}
+
+.location {
+  position: absolute;
+  top: 10vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--font-white);
 }
 
 .location-header {
@@ -74,6 +89,8 @@ p {
   align-items: center;
   font-size: 1.5rem;
   font-weight: 600;
+  padding: 2rem;
+  gap: 1rem;
 }
 
 .input {
@@ -83,20 +100,22 @@ p {
   transform: translate(-50%, -50%);
   display: flex;
   gap: 0.7rem;
+  z-index: 3;
 }
 
 .input > input {
-  background: var(--soft-white-bg);
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10.2px);
   -webkit-backdrop-filter: blur(10.2px);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 8px;
-  color: white;
-  font-wight: 800;
+  padding: 7px 9px;
+  color: var(--font-white);
+  font-weight: 800;
 }
 
+.input > input:focus,
 .input > input:active {
   border: 2px solid rgba(255, 255, 255 0.3);
   outline: none;
@@ -104,15 +123,17 @@ p {
 
 .input > button {
   border-radius: 50%;
-  border: none;
   padding: 10px;
   background: var(--soft-white-bg);
-  color: white;
+  color: var(--font-white);
   border: var(--soft-white-border);
+  font-weight: 800;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
 }
 
 .input > button:hover {
   cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .data {
@@ -129,4 +150,23 @@ p {
   font-size: 0.6rem;
   color: darkgrey;
   font-weight: 400;
+}
+
+.glassify {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 100%;
+  width: 100%;
+  z-index: 1;
 }
