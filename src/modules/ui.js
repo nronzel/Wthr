@@ -4,6 +4,7 @@ export default class UI {
   static displayData(data) {
     if (document.querySelector(".weather-container")) UI.clearScreen();
     UI.clearInput();
+    UI.hideSubmitBtn();
     UI.setBgImage(data.current.condition.code);
 
     let container = document.createElement("div");
@@ -96,23 +97,37 @@ export default class UI {
 
   static clearInput() {
     let input = document.getElementById("Zip");
+    let btn = document.querySelector(".fa-check");
     input.value = "";
     input.textContent = "";
+    btn.classList.remove("active");
   }
 
   static setSubmitEventListener() {
     let submit = document.querySelector(".submit");
     let input = document.getElementById("Zip");
 
-    submit.addEventListener("click", getData);
     input.addEventListener("keypress", (e) => {
       if (e.key === "Enter") submit.click();
     });
+
+    input.addEventListener("keydown", UI.showSubmitBtn);
   }
 
   static clearScreen() {
     let mainContainer = document.querySelector(".main-container");
     mainContainer.innerHTML = "";
+  }
+
+  static showSubmitBtn() {
+    let btn = document.querySelector(".submit");
+    btn.classList.add("active");
+    btn.addEventListener("click", getData);
+  }
+
+  static hideSubmitBtn() {
+    let btn = document.querySelector(".submit");
+    btn.classList.remove("active");
   }
 
   static setBgImage(weatherCode) {

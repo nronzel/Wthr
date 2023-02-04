@@ -11,11 +11,12 @@
 
 :root {
   /* colors */
-  --soft-white-bg: rgba(255, 255, 255, 0.14);
-  --font-white: #fff;
+  --soft-white-bg: hsla(0, 0%, 100%, 0.14);
+  --font-white: hwb(0 100% 0%);
+  --bg-hover: hsla(0, 0%, 100%, 0.3);
 
   /* borders */
-  --soft-white-border: 1px solid rgba(255, 255, 255, 0.18);
+  --soft-white-border: 1px solid hsla(0, 0%, 100%, 0.18);
 }
 
 body {
@@ -30,6 +31,23 @@ p {
 
 h1 {
   font-size: 1.3rem;
+}
+
+h3 {
+  color: var(--font-white);
+}
+
+#unit {
+  font-size: 1.2rem;
+  margin-right: 12px;
+  border: none;
+  background: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+#unit:active {
+  transform: scale(0.8);
 }
 
 .background {
@@ -100,17 +118,19 @@ h1 {
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 0.7rem;
   z-index: 3;
 }
 
 .input > input {
-  background: rgba(255, 255, 255, 0.3);
+  background: hsla(0, 0%, 100%, 0.1);
   border-radius: 16px;
-  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 3px hsla(0, 0%, 0%, 0.2);
   backdrop-filter: blur(10.2px);
   -webkit-backdrop-filter: blur(10.2px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid hsla(0, 0%, 100%, 0.18);
   padding: 7px 9px;
   color: var(--font-white);
   font-weight: 800;
@@ -118,23 +138,23 @@ h1 {
 
 .input > input:focus,
 .input > input:active {
-  border: 2px solid rgba(255, 255, 255 0.3);
+  border: 2px solid rgba(255, 255, 255 0.2);
+  background: var(--bg-hover);
   outline: none;
 }
 
 .input > button {
   border-radius: 50%;
   padding: 10px;
-  background: var(--soft-white-bg);
+  background: none;
+  border: none;
   color: var(--font-white);
-  border: var(--soft-white-border);
   font-weight: 800;
-  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
 }
 
 .input > button:hover {
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.2);
 }
 
 .data {
@@ -160,12 +180,12 @@ h1 {
 }
 
 .glassify {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .overlay {
@@ -179,5 +199,28 @@ h1 {
 }
 
 .fa-x {
-  font-size: 2rem;
+  font-size: 1rem;
+}
+
+.submit {
+  visibility: hidden;
+  opacity: 0;
+  transition: ease-in-out 0.5s;
+}
+
+.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (max-width: 850px) {
+  .weather-container {
+    grid-template-columns: repeat(3, 1.5fr);
+  }
+}
+
+@media (max-width: 550px) {
+  .weather-container {
+    grid-template-columns: repeat(2, 1.5fr);
+  }
 }
