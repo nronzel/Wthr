@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+}
+
+:root {
+  /* colors */
+  --soft-white-bg: rgba(255, 255, 255, 0.14);
+  --font-white: #fff;
+
+  /* borders */
+  --soft-white-border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+body {
+  height: 100vh;
+  font-family: "Rubik", sans-serif;
+}
+
+p {
+  text-align: center;
+  color: var(--font-white);
+}
+
+h1 {
+  font-size: 1.3rem;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  z-index: -1;
+  border: none;
+  outline: none;
+}
+
+.main-container {
+  height: 900px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  position: relative;
+}
+
+.weather-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1.5fr);
+  grid-template-rows: auto;
+  grid-auto-flow: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  padding: 1.2rem;
+}
+
+.heading {
+  font-weight: 900;
+  font-size: 1.2rem;
+  margin-top: 5px;
+  color: var(--font-white);
+}
+
+.location {
+  position: absolute;
+  top: 10vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--font-white);
+}
+
+.location-header {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.input {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 0.7rem;
+  z-index: 3;
+}
+
+.input > input {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10.2px);
+  -webkit-backdrop-filter: blur(10.2px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 7px 9px;
+  color: var(--font-white);
+  font-weight: 800;
+}
+
+.input > input:focus,
+.input > input:active {
+  border: 2px solid rgba(255, 255, 255 0.3);
+  outline: none;
+}
+
+.input > button {
+  border-radius: 50%;
+  padding: 10px;
+  background: var(--soft-white-bg);
+  color: var(--font-white);
+  border: var(--soft-white-border);
+  font-weight: 800;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+
+.input > button:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.data {
+  height: 50px;
+  width: 150px;
+}
+
+.condition {
+  font-size: 1.3rem;
+  padding-bottom: 5px;
+}
+
+.small {
+  font-size: 0.6rem;
+  color: darkgrey;
+  font-weight: 400;
+}
+
+.glassify {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
