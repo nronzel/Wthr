@@ -7,20 +7,25 @@ export default class UI {
     UI.setBgImage(data.current.condition.code);
 
     let container = document.createElement("div");
-    let header = document.querySelector(".location-header");
-    let location = document.querySelector(".location");
+    let condition = document.createElement("div");
+    let location = document.createElement("div");
+    const mainContainer = document.querySelector(".main-container");
 
     location.innerHTML = `
-    <h1 class="location glassify">${data.location.name} ${data.location.region}</h1>
+    <h1 class="location">${data.location.name}</h1>
+    <h1 class="location region">${data.location.region}</h1>
     `;
-    header.innerHTML = `
-    <p class="small">Last Updated ${data.current.last_updated}</p>
+
+    condition.innerHTML = `
     <p class="condition">${data.current.condition.text}</p>
+    <p class="small">Last Updated ${data.current.last_updated}</p>
     `;
-    document.querySelector(".main-container").append(location);
-    document.querySelector(".main-container").append(container);
+
+    condition.classList.add("condition");
     container.classList.add("weather-container");
     container.classList.add("glassify");
+    location.classList.add("location-container");
+
     container.innerHTML = `
     <div class="data">
       <p class="heading">Feels Like C</p><p>${data.current.feelslike_c}</p>
@@ -78,6 +83,10 @@ export default class UI {
       <p class="heading">Wind mph</p><p>${data.current.wind_mph}</p>
     </div>
     `;
+
+    mainContainer.append(location);
+    mainContainer.append(condition);
+    mainContainer.append(container);
   }
 
   static getZip() {
@@ -102,8 +111,8 @@ export default class UI {
   }
 
   static clearScreen() {
-    let weatherContainer = document.querySelector(".weather-container");
-    weatherContainer.outerHTML = "";
+    let mainContainer = document.querySelector(".main-container");
+    mainContainer.innerHTML = "";
   }
 
   static setBgImage(weatherCode) {

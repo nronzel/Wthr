@@ -48,10 +48,11 @@ h1 {
   height: 900px;
   display: flex;
   flex-flow: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   z-index: 2;
   position: relative;
+  padding-top: 3rem;
 }
 
 .weather-container {
@@ -72,12 +73,12 @@ h1 {
   color: var(--font-white);
 }
 
-.location {
-  position: absolute;
-  top: 10vh;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+.location-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  gap: 5px;
   padding: 1.5rem;
   color: var(--font-white);
 }
@@ -141,6 +142,11 @@ h1 {
   width: 150px;
 }
 
+.region {
+  color: #e6e6e6;
+  font-weight: 300;
+}
+
 .condition {
   font-size: 1.3rem;
   padding-bottom: 5px;
@@ -148,8 +154,9 @@ h1 {
 
 .small {
   font-size: 0.6rem;
-  color: darkgrey;
+  color: rgb(193, 193, 193);
   font-weight: 400;
+  z-index: 3;
 }
 
 .glassify {
@@ -169,4 +176,8 @@ h1 {
   height: 100%;
   width: 100%;
   z-index: 1;
+}
+
+.fa-x {
+  font-size: 2rem;
 }
