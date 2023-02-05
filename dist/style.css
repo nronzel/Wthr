@@ -52,14 +52,13 @@ input {
 }
 
 #unit {
-  font-size: 1.3rem;
-  margin-right: 12px;
+  font-size: 2rem;
   border: none;
   background: none;
   box-shadow: none;
-  cursor: pointer;
   transition: ease 0.3s;
   font-family: "Roboto Mono", monospace;
+  color: var(--font-white);
 }
 
 #unit::after {
@@ -297,6 +296,63 @@ input {
 .active {
   visibility: visible;
   opacity: 1;
+}
+
+/* TOGGLE SWITCH */
+#Toggle {
+  position: absolute;
+  bottom: 3vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggle {
+  display: inline-block;
+  cursor: pointer;
+  --width: 60px;
+  --height: calc(var(--width) / 2);
+  --border-radius: calc(var(--height) / 2);
+  margin-right: 10px;
+}
+
+.toggle__input {
+  display: none;
+}
+
+.toggle__fill {
+  position: relative;
+  width: var(--width);
+  height: var(--height);
+  border-radius: var(--border-radius);
+  background: hsla(62, 100%, 70%, 0.706);
+  transition: background 0.2s;
+}
+
+.toggle__fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: var(--height);
+  width: var(--height);
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  border-radius: var(--border-radius);
+  transition: transform 0.2s;
+}
+
+.toggle__input:checked ~ .toggle__fill {
+  background: hsla(189, 100%, 85%, 0.663);
+  z-index: 3;
+}
+
+.toggle__input:checked ~ .toggle__fill::after {
+  transform: translateX(var(--height));
+  z-index: 3;
 }
 
 .fa-x {

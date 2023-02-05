@@ -131,9 +131,9 @@ export default class UI {
   static setEventListeners() {
     let submit = document.querySelector(".submit");
     let input = document.getElementById("Zip");
-    let unit = document.getElementById("unit");
+    const toggle = document.getElementById("myToggle");
+    toggle.addEventListener("change", UI.changeUnit);
 
-    unit.addEventListener("click", UI.changeUnit);
     input.addEventListener("keypress", (e) => {
       if (e.key === "Enter") submit.click();
     });
@@ -198,8 +198,10 @@ export default class UI {
   }
 
   static changeUnit() {
+    const toggle = document.getElementById("myToggle");
     const unit = document.getElementById("unit");
-    if (unit.textContent == "F") {
+
+    if (toggle.checked) {
       unit.textContent = "C";
       getData();
     } else {
