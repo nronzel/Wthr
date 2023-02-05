@@ -1,9 +1,9 @@
 import { getData } from "./fetch.js";
 
 export default class UI {
-  static displayData(data, unit) {
-    // if (document.querySelector(".weather-container")) UI.clearScreen();
-
+  static async displayData() {
+    const unit = UI.getUnit();
+    const data = await getData();
     UI.clearScreen();
     UI.setBgImage(data.current.condition.code);
 
@@ -36,6 +36,7 @@ export default class UI {
     mainContainer.append(location);
     mainContainer.append(condition);
     mainContainer.append(container);
+    UI.animateArrow(data);
   }
 
   static displayTodayTemp(units, container) {
@@ -187,10 +188,11 @@ export default class UI {
 
   static submitBtnAction() {
     const input = document.getElementById("Zip");
+    const unit = document.getElementById("unit").textContent;
     document.body.setAttribute("data-last-zip", input.value);
     UI.clearInput();
     UI.hideSubmitBtn();
-    getData();
+    UI.displayData(unit);
   }
 
   static hideSubmitBtn() {
@@ -236,17 +238,17 @@ export default class UI {
 
     if (toggle.checked) {
       unit.textContent = "C";
-      getData();
+      UI.displayData(unit);
     } else {
       unit.textContent = "F";
-      getData();
+      UI.displayData(unit);
     }
   }
 
-  static animateArrow(deg) {
+  static animateArrow(data) {
     const arrow = document.querySelector(".fa-arrow-up");
-    arrow.style.transition = "1.2s ease-in-out";
-    arrow.style.transform = `rotate(${deg}deg)`;
+    const windDeg = data.current.wind_degree;
+    arrow.style.transform = `rotate(${windDeg}deg)`;
   }
 
   // TIME
