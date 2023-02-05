@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400&display=swap");
 
 *,
 *:before,
@@ -22,7 +22,8 @@
   /* responsive font sizes */
   /* courtesy of https://css-tricks.com/snippets/css/fluid-typography/ */
   /* formula: calc([min size] + ([max size] - [min size]) * ((100vw - [min vw]) / ([max vh] - [min vw]))); */
-  --small-font: calc(32px + (42 - 32) * ((100vw - 315px) / (1000 - 315)));
+  --x-small-font: calc(15px + (20 - 15) * ((100vw - 315px) / (1600 - 315)));
+  --small-font: calc(16px + (26 - 16) * ((100vw - 315px) / (1600 - 315)));
   --medium-font: calc(24px + (30 - 24) * ((100vw - 315px) / (1000 - 315)));
   --large-font: calc(32px + (42 - 32) * ((100vw - 315px) / (1000 - 315)));
   --x-large-font: calc(72px + (83 - 72) * ((100vw - 315px) / (1000 - 315)));
@@ -52,48 +53,41 @@ input {
 }
 
 #unit {
-  font-size: 2rem;
-  border: none;
-  background: none;
-  box-shadow: none;
-  transition: ease 0.3s;
+  font-size: 30px;
   font-family: "Roboto Mono", monospace;
   color: var(--font-white);
+  transition: ease 0.3s;
 }
 
 #unit::after {
-  content: "\00B0";
+  /* content: "\00B0"; */
   position: absolute;
 }
 
 #Zip {
+  font-family: "Jost", monospace;
   height: 36px;
-  background: hsla(0, 0%, 100%, 0.024);
-  border-radius: 8px;
-  backdrop-filter: blur(10.2px);
-  -webkit-backdrop-filter: blur(10.2px);
-  border: 1px solid hsla(0, 0%, 100%, 0.4);
+  width: 140px;
   padding: 7px 9px;
   color: var(--font-white);
   font-weight: 300;
   font-size: 1.1rem;
-  width: 140px;
 }
 
 #Zip::placeholder {
-  font-weight: 300;
+  font-weight: 200;
   text-align: center;
-  font-family: "Jost", monospace;
   font-size: 1.1rem;
-  color: hsla(0, 0%, 100%, 0.6);
+  color: hsla(0, 0%, 100%, 0.792);
 }
 
 #Zip:focus,
 #Zip:active {
-  border: 1px solid rgba(255, 255, 255);
+  border: 1px solid rgba(255, 255, 255, 0.324);
   background: rgba(0, 0, 0, 0.1);
   outline: none;
   text-align: center;
+  font-weight: 300;
 }
 
 .background {
@@ -193,6 +187,10 @@ input {
   align-items: center;
 }
 
+.feels-like {
+  font-size: var(--small-font);
+}
+
 .weather-stats-container {
   display: grid;
   grid-template-columns: repeat(3, auto);
@@ -209,14 +207,14 @@ input {
 }
 
 .weather-data-header {
-  font-size: calc(16px + (26 - 16) * ((100vw - 315px) / (1600 - 315)));
+  font-size: var(--small-font);
   color: hsl(0, 0%, 100%);
   font-weight: 300;
   border-bottom: 1px solid var(--font-white);
 }
 
 .weather-data-value {
-  font-size: 1.5rem;
+  font-size: var(--medium-font);
   color: var(--font-white);
 }
 
@@ -250,38 +248,28 @@ input {
   transform: scale(1.2);
 }
 
-.data {
-  height: 50px;
-  width: 150px;
-}
-
 .region {
   color: var(--font-white);
   font-weight: 300;
 }
 
 .condition {
-  font-size: var(--medium-font);
+  font-size: var(--large-font);
   padding-bottom: 5px;
 }
 
 .small-txt {
-  font-size: 0.6rem;
+  font-size: var(--x-small-font);
   color: var(--font-white);
-  font-weight: 400;
-}
-
-.med-txt {
-  font-weight: 300;
+  font-weight: 200;
 }
 
 .glassify {
-  background: rgba(255, 255, 255, 0.1);
+  background: hsla(0, 0%, 100%, 0.024);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(7.6px);
-  -webkit-backdrop-filter: blur(7.6px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid hsla(0, 0%, 100%, 0.082);
 }
 
 .overlay {
@@ -315,12 +303,13 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 12px 14px;
 }
 
 .toggle {
   display: inline-block;
   cursor: pointer;
-  --width: 60px;
+  --width: 50px;
   --height: calc(var(--width) / 2);
   --border-radius: calc(var(--height) / 2);
   margin-right: 10px;
@@ -353,7 +342,7 @@ input {
 }
 
 .toggle__input:checked ~ .toggle__fill {
-  background: hsla(62, 87%, 94%, 0.663);
+  background: hsla(60, 6%, 17%, 0.663);
   z-index: 3;
 }
 
@@ -387,7 +376,7 @@ input {
 }
 
 .footer-text {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 
 footer {
