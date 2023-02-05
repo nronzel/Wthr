@@ -2,8 +2,9 @@ import { getData } from "./fetch.js";
 
 export default class UI {
   static displayData(data, unit) {
-    if (document.querySelector(".weather-container")) UI.clearScreen();
+    // if (document.querySelector(".weather-container")) UI.clearScreen();
 
+    UI.clearScreen();
     UI.setBgImage(data.current.condition.code);
 
     let container = document.createElement("div");
@@ -259,6 +260,7 @@ export default class UI {
       lightCloudDay: "./assets/imgs/partly-cloudy-day.jpg",
       lightCloudNight: "./assets/imgs/partly-cloudy-night.jpg",
       overcast: "./assets/imgs/overcast.jpg",
+      overcastNight: "./assets/imgs/overcast-night.jpg",
       lightRain: "./assets/imgs/light-rain.jpg",
       rain: "./assets/imgs/rain.jpg",
       rainNight: "./assets/imgs/rain-night.jpg",
