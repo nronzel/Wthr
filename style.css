@@ -1,5 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap"); */
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&display=swap");
 
 *,
 *:before,
@@ -17,11 +18,19 @@
 
   /* borders */
   --soft-white-border: 1px solid hsla(0, 0%, 100%, 0.18);
+
+  /* responsive font sizes */
+  /* courtesy of https://css-tricks.com/snippets/css/fluid-typography/ */
+  /* formula: calc([min size] + ([max size] - [min size]) * ((100vw - [min vw]) / ([max vh] - [min vw]))); */
+  --small-font: calc(32px + (42 - 32) * ((100vw - 315px) / (1000 - 315)));
+  --medium-font: calc(32px + (42 - 32) * ((100vw - 315px) / (1000 - 315)));
+  --large-font: calc(32px + (42 - 32) * ((100vw - 315px) / (1000 - 315)));
+  --x-large-font: calc(72px + (83 - 72) * ((100vw - 315px) / (1000 - 315)));
 }
 
 body {
   height: 100vh;
-  font-family: "Rubik", sans-serif;
+  font-family: "Jost", sans-serif;
   font-size: 16px;
 }
 
@@ -36,6 +45,10 @@ h1 {
 
 h3 {
   color: var(--font-white);
+}
+
+input {
+  text-align: center;
 }
 
 #unit {
@@ -54,6 +67,35 @@ h3 {
   position: absolute;
 }
 
+#Zip {
+  height: 36px;
+  background: hsla(0, 0%, 100%, 0.024);
+  border-radius: 8px;
+  backdrop-filter: blur(10.2px);
+  -webkit-backdrop-filter: blur(10.2px);
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+  padding: 7px 9px;
+  color: var(--font-white);
+  font-weight: 300;
+  font-size: 1.1rem;
+  width: 140px;
+}
+
+#Zip::placeholder {
+  font-weight: 300;
+  text-align: center;
+  font-family: "Jost", monospace;
+  font-size: 1.1rem;
+  color: hsla(0, 0%, 100%, 0.6);
+}
+
+#Zip:focus,
+#Zip:active {
+  border: 1px solid rgba(255, 255, 255);
+  background: rgba(0, 0, 0, 0.1);
+  outline: none;
+  text-align: center;
+}
 .background {
   position: fixed;
   top: 0;
@@ -102,13 +144,12 @@ h3 {
   justify-content: center;
   align-items: center;
   flex-flow: column;
-  gap: 5px;
   padding: 1.5rem;
   color: var(--font-white);
 }
 
 .location {
-  font-size: calc(32px + (42 - 32) * ((100vw - 315px) / (1000 - 315)));
+  font-size: var(--large-font);
 }
 
 .location-header {
@@ -122,8 +163,13 @@ h3 {
   gap: 1rem;
 }
 
+.location.region {
+  margin-top: -12px;
+  font-weight: 200;
+}
+
 .current-temp {
-  font-size: calc(60px + (72 - 60) * ((100vw - 315px) / (1000 - 315)));
+  font-size: var(--x-large-font);
   color: var(--font-white);
 }
 
@@ -143,33 +189,36 @@ h3 {
 
 .weather-stats-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, auto);
   justify-content: center;
   align-items: center;
+  gap: 1rem;
 }
 
 .wind-stats {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .weather-data-header {
   font-size: calc(16px + (26 - 16) * ((100vw - 315px) / (1600 - 315)));
-  color: hsl(0, 0%, 85%);
+  color: hsl(0, 0%, 100%);
+  font-weight: 300;
+  border-bottom: 1px solid var(--font-white);
 }
 
 .weather-data-value {
   font-size: 1.5rem;
-  color: white;
+  color: var(--font-white);
 }
 
 .weather-data {
   margin-bottom: 7px;
 }
 
-.input {
+.header {
   position: absolute;
   top: 2rem;
   left: 50%;
@@ -181,26 +230,7 @@ h3 {
   z-index: 3;
 }
 
-.input > input {
-  background: hsla(0, 0%, 100%, 0.024);
-  border-radius: 8px;
-  /* box-shadow: 0 2px 3px hsla(0, 0%, 0%, 0.2); */
-  backdrop-filter: blur(10.2px);
-  -webkit-backdrop-filter: blur(10.2px);
-  border: 1px solid hsl(0, 0%, 100%);
-  padding: 7px 9px;
-  color: var(--font-white);
-  font-weight: 800;
-}
-
-.input > input:focus,
-.input > input:active {
-  border: 1px solid rgba(255, 255, 255);
-  background: rgba(0, 0, 0, 0.1);
-  outline: none;
-}
-
-.input > button {
+.header > button {
   border-radius: 50%;
   padding: 10px;
   background: none;
@@ -209,7 +239,7 @@ h3 {
   font-weight: 800;
 }
 
-.input > button:hover {
+.header > button:hover {
   cursor: pointer;
   transform: scale(1.2);
 }
@@ -220,12 +250,12 @@ h3 {
 }
 
 .region {
-  color: #e6e6e6;
+  color: var(--font-white);
   font-weight: 300;
 }
 
 .condition {
-  font-size: calc(32px + (42 - 32) * ((100vw - 315px) / (1000 - 315)));
+  font-size: var(--medium-font);
   padding-bottom: 5px;
 }
 
@@ -233,6 +263,10 @@ h3 {
   font-size: 0.6rem;
   color: var(--font-white);
   font-weight: 400;
+}
+
+.med-txt {
+  font-weight: 300;
 }
 
 .glassify {
@@ -254,10 +288,6 @@ h3 {
   z-index: 1;
 }
 
-.fa-x {
-  font-size: 1rem;
-}
-
 .submit {
   visibility: hidden;
   opacity: 0;
@@ -267,6 +297,10 @@ h3 {
 .active {
   visibility: visible;
   opacity: 1;
+}
+
+.fa-x {
+  font-size: 1rem;
 }
 
 .fa-github {
@@ -283,6 +317,10 @@ h3 {
   color: var(--font-white);
   font-size: 1.5rem;
   /* transition: ease-in-out 1s; */
+}
+
+.fa-check {
+  font-size: 20px;
 }
 
 .footer-text {
