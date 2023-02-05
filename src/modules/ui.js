@@ -44,7 +44,7 @@ export default class UI {
     const feelsLikeContainer = document.createElement("div");
 
     todayTempContainer.classList.add("temperature-stats");
-    feelsLikeContainer.classList.add("feels-like-container");
+    feelsLikeContainer.classList.add("flex-column");
 
     todayTempContainer.innerHTML = `
     <i class="fas fa-temperature-half"></i>
@@ -93,7 +93,7 @@ export default class UI {
     `;
 
     precipDiv.innerHTML = `
-    <p class="weather-data-header">PRECIPITATION</p>
+    <p class="weather-data-header">PRECIP.</p>
     <p class="weather-data-value">${units.precip} <span class="small-txt">${units.precip_unit}</span></p>
     `;
 
@@ -105,25 +105,45 @@ export default class UI {
   }
 
   static displayWindStats(data, units, container) {
-    const windStatsContainer = document.createElement("div");
-    const windStats = document.createElement("div");
+    const windMainContainer = document.createElement("div");
+    const windDataContainer = document.createElement("div");
+    const windSpeedContainer = document.createElement("div");
+    const windDirContainer = document.createElement("div");
+    const windGustContainer = document.createElement("div");
 
     // add classes
-    windStatsContainer.classList.add("wind-stats-container");
-    windStats.classList.add("wind-stats");
+    windMainContainer.classList.add("wind-main-container");
+    windMainContainer.classList.add("flex-column");
+    windDataContainer.classList.add("wind-data-container");
 
+    windSpeedContainer.classList.add("wind-data");
+    windDirContainer.classList.add("wind-data");
+    windGustContainer.classList.add("wind-data");
     // add content
-    windStatsContainer.innerHTML = `<p class="weather-data-header">WIND</p>`;
-    windStats.innerHTML = `
-    <p class="weather-data-value">${data.current.wind_dir}</p>
-    <i class="fas fa-arrow-up"></i>
-    <p class="weather-data-value">${units.currentWind} <span class="small-txt">${units.wind_unit}</span></p>
-    <p class="weather-data-value">${units.gust} <span class="small-txt">${units.wind_unit}</span></p>
+
+    windMainContainer.innerHTML = `<p class="weather-data-header">WIND</p>`;
+
+    windDirContainer.innerHTML = `
+    <p class="wind-data-header">DIRECTION</p>
+    <p class="wind-data-value"><span><i class="fas fa-arrow-up"></i></span>${data.current.wind_dir}</p>
+    `;
+
+    windSpeedContainer.innerHTML = `
+    <p class="wind-data-header">SPEED</p>
+    <p class="wind-data-value">${units.currentWind} <span class="small-txt">${units.wind_unit}</span></p>
+    `;
+
+    windGustContainer.innerHTML = `
+    <p class="wind-data-header">GUST</p>
+    <p class="wind-data-value">${units.gust} <span class="small-txt">${units.wind_unit}</span></p>
     `;
 
     // append
-    windStatsContainer.append(windStats);
-    container.append(windStatsContainer);
+    windDataContainer.append(windDirContainer);
+    windDataContainer.append(windSpeedContainer);
+    windDataContainer.append(windGustContainer);
+    windMainContainer.append(windDataContainer);
+    container.append(windMainContainer);
   }
 
   static getZip() {
@@ -226,8 +246,8 @@ export default class UI {
 
   static animateArrow(deg) {
     const arrow = document.querySelector(".fa-arrow-up");
-    arrow.style.transform = `rotate(${deg}deg)`;
     arrow.style.transition = "1.2s ease-in-out";
+    arrow.style.transform = `rotate(${deg}deg)`;
   }
 
   // BACKGROUND TODO
