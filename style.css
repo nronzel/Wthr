@@ -379,6 +379,7 @@ input {
   color: var(--font-white);
   font-size: var(--medium-font);
   margin-right: 14px;
+  transition: 3s ease-in-out;
 }
 
 .fa-check {
