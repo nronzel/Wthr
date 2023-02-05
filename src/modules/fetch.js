@@ -22,6 +22,7 @@ async function parseData(data) {
     let todayWeather = await data;
     let unit = UI.getUnit();
     UI.displayData(todayWeather, unit);
+    UI.animateArrow(todayWeather.current.wind_degree);
   } catch (error) {
     console.error(error.message);
   }

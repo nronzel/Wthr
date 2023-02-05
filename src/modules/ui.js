@@ -36,8 +36,6 @@ export default class UI {
     mainContainer.append(location);
     mainContainer.append(condition);
     mainContainer.append(container);
-
-    UI.animateArrow(data.current.wind_degree);
   }
 
   static displayTodayTemp(units, container) {
@@ -251,6 +249,12 @@ export default class UI {
     arrow.style.transform = `rotate(${deg}deg)`;
   }
 
+  // TIME
+  static getTimeHour() {
+    const time = new Date();
+    return time.getHours();
+  }
+
   // BACKGROUND TODO
   static setBgImage(weatherCode) {
     const images = {
@@ -266,8 +270,12 @@ export default class UI {
       rainNight: "./assets/imgs/rain-night.jpg",
       thunderstorm: "./assets/imgs/thunderstorm.jpg",
       snow: "./assets/imgs/snow.jpg",
+      snowNight: "./assets/imgs/snow-night.jpg",
       blizzard: "./assets/imgs/blizzard.jpg",
       fog: "./assets/imgs/fog.jpg",
     };
+
+    const hour = UI.getTimeHour();
+    // if (time)
   }
 }
