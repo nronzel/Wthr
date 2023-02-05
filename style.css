@@ -22,8 +22,8 @@
   /* responsive font sizes */
   /* courtesy of https://css-tricks.com/snippets/css/fluid-typography/ */
   /* formula: calc([min size] + ([max size] - [min size]) * ((100vw - [min vw]) / ([max vh] - [min vw]))); */
-  --x-small-font: calc(15px + (20 - 15) * ((100vw - 315px) / (1600 - 315)));
-  --small-font: calc(16px + (26 - 16) * ((100vw - 315px) / (1600 - 315)));
+  --x-small-font: calc(16px + (20 - 16) * ((100vw - 315px) / (1600 - 315)));
+  --small-font: calc(18px + (26 - 18) * ((100vw - 315px) / (1600 - 315)));
   --medium-font: calc(24px + (30 - 24) * ((100vw - 315px) / (1000 - 315)));
   --large-font: calc(32px + (42 - 32) * ((100vw - 315px) / (1000 - 315)));
   --x-large-font: calc(72px + (83 - 72) * ((100vw - 315px) / (1000 - 315)));
@@ -179,19 +179,12 @@ input {
   gap: 4px;
 }
 
-.feels-like-container,
-.wind-stats-container {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .feels-like {
-  font-size: var(--small-font);
+  font-size: var(--medium-font);
 }
 
-.weather-stats-container {
+.weather-stats-container,
+.wind-data-container {
   display: grid;
   grid-template-columns: repeat(3, auto);
   justify-content: center;
@@ -199,27 +192,31 @@ input {
   gap: 1rem;
 }
 
-.wind-stats {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
+.wind-data-container {
+  gap: 2rem;
 }
 
-.weather-data-header {
+.weather-data-header,
+.wind-data-header {
   font-size: var(--small-font);
   color: hsl(0, 0%, 100%);
   font-weight: 300;
   border-bottom: 1px solid var(--font-white);
 }
 
-.weather-data-value {
+.weather-data-value,
+.wind-data-value {
   font-size: var(--medium-font);
   color: var(--font-white);
 }
 
-.weather-data {
+.weather-data,
+.wind-data {
   margin-bottom: 7px;
+}
+
+.wind-data-header {
+  font-weight: 200;
 }
 
 .header {
@@ -248,6 +245,19 @@ input {
   transform: scale(1.2);
 }
 
+.flex-column {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .region {
   color: var(--font-white);
   font-weight: 300;
@@ -262,6 +272,10 @@ input {
   font-size: var(--x-small-font);
   color: var(--font-white);
   font-weight: 200;
+}
+
+.med-txt {
+  font-size: var(--small-font);
 }
 
 .glassify {
@@ -367,8 +381,8 @@ input {
 
 .fa-arrow-up {
   color: var(--font-white);
-  font-size: 1.5rem;
-  /* transition: ease-in-out 1s; */
+  font-size: var(--medium-font);
+  margin-right: 14px;
 }
 
 .fa-check {
