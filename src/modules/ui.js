@@ -46,9 +46,12 @@ export default class UI {
     todayTempContainer.classList.add("temperature-stats");
     feelsLikeContainer.classList.add("feels-like-container");
 
-    todayTempContainer.innerHTML = `<h1 class="current-temp">${units.currentTemp}${units.temp_unit}<h1>`;
+    todayTempContainer.innerHTML = `
+    <i class="fas fa-temperature-half"></i>
+    <h1 class="current-temp">${units.currentTemp}${units.temp_unit}<h1>
+    `;
     feelsLikeContainer.innerHTML = `
-    <p>FEELS LIKE</p>
+    <p class="med-txt">FEELS LIKE</p>
     <p class="feels-like">${units.feelsLike} ${units.temp_unit}</p>
     `;
 
@@ -149,8 +152,7 @@ export default class UI {
     btn.addEventListener("click", UI.submitBtnAction);
   }
 
-  static submitBtnAction(e) {
-    e.preventDefault();
+  static submitBtnAction() {
     const input = document.getElementById("Zip");
     document.body.setAttribute("data-last-zip", input.value);
     UI.clearInput();
