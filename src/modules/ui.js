@@ -1,10 +1,9 @@
 import { getData } from "./fetch.js";
 
 export default class UI {
-  static displayData(data) {
+  static displayData(data, unit) {
     if (document.querySelector(".weather-container")) UI.clearScreen();
-    UI.clearInput();
-    UI.hideSubmitBtn();
+
     UI.setBgImage(data.current.condition.code);
 
     let container = document.createElement("div");
@@ -19,7 +18,7 @@ export default class UI {
 
     condition.innerHTML = `
     <p class="condition">${data.current.condition.text}</p>
-    <p class="small">Last Updated ${data.current.last_updated}</p>
+    <p class="small-txt">Last Updated ${data.current.last_updated}</p>
     `;
 
     condition.classList.add("condition");
@@ -27,7 +26,7 @@ export default class UI {
     // container.classList.add("glassify");
     location.classList.add("location-container");
 
-    const units = UI.setPropertyUnits(UI.getUnit(), data);
+    const units = UI.setPropertyUnits(unit, data);
 
     UI.displayTodayTemp(container, units);
     UI.displayWeatherStats(data, units, container);
@@ -36,6 +35,8 @@ export default class UI {
     mainContainer.append(location);
     mainContainer.append(condition);
     mainContainer.append(container);
+
+    UI.animateArrow(data.current.wind_degree);
   }
 
   static displayTodayTemp(container, units) {
@@ -48,7 +49,7 @@ export default class UI {
     todayTempContainer.innerHTML = `<h1 class="current-temp">${units.currentTemp}${units.temp_unit}<h1>`;
     feelsLikeContainer.innerHTML = `
     <p>FEELS LIKE</p>
-    <p class="feels-like">${units.feelsLike}${units.temp_unit}</p>
+    <p class="feels-like">${units.feelsLike} ${units.temp_unit}</p>
     `;
 
     todayTempContainer.append(feelsLikeContainer);
@@ -67,18 +68,18 @@ export default class UI {
     precipDiv.classList.add("weather-data");
 
     humidityDiv.innerHTML = `
-    <p class="weather-data-header">Humidity</p>
+    <p class="weather-data-header">HUMIDITY</p>
     <p class="weather-data-value">${data.current.humidity}%</p>
     `;
 
     uvDiv.innerHTML = `
-    <p class="weather-data-header">UV Index</p>
+    <p class="weather-data-header">UV INDEX</p>
     <p class="weather-data-value">${data.current.uv}</p>
     `;
 
     precipDiv.innerHTML = `
-    <p class="weather-data-header">Precipitation</p>
-    <p class="weather-data-value">${units.precip}${units.precip_unit}</p>
+    <p class="weather-data-header">PRECIPITATION</p>
+    <p class="weather-data-value">${units.precip} ${units.precip_unit}</p>
     `;
 
     // append items
@@ -97,12 +98,12 @@ export default class UI {
     windStats.classList.add("wind-stats");
 
     // add content
-    windStatsContainer.innerHTML = `<p class="weather-data-header">Wind</p>`;
+    windStatsContainer.innerHTML = `<p class="weather-data-header">WIND</p>`;
     windStats.innerHTML = `
     <p class="weather-data-value">${data.current.wind_dir}</p>
     <i class="fas fa-arrow-up"></i>
-    <p class="weather-data-value">${units.currentWind}${units.wind_unit}</p>
-    <p class="weather-data-value">${units.gust}${units.wind_unit}</p>
+    <p class="weather-data-value">${units.currentWind} <span class="small-txt">${units.wind_unit}</span></p>
+    <p class="weather-data-value">${units.gust} <span class="small-txt">${units.wind_unit}</span></p>
     `;
 
     // append
@@ -111,15 +112,16 @@ export default class UI {
   }
 
   static getZip() {
+    if (document.body.dataset) return document.body.dataset.lastZip;
     let input = document.getElementById("Zip");
-    return input.value;
+    return input.textContent;
   }
 
   static clearInput() {
     let input = document.getElementById("Zip");
     let btn = document.querySelector(".fa-check");
     input.value = "";
-    input.textContent = "";
+    // input.textContent = "";
     btn.classList.remove("active");
   }
 
@@ -144,7 +146,16 @@ export default class UI {
   static showSubmitBtn() {
     let btn = document.querySelector(".submit");
     btn.classList.add("active");
-    btn.addEventListener("click", getData);
+    btn.addEventListener("click", UI.submitBtnAction);
+  }
+
+  static submitBtnAction(e) {
+    e.preventDefault();
+    const input = document.getElementById("Zip");
+    document.body.setAttribute("data-last-zip", input.value);
+    UI.clearInput();
+    UI.hideSubmitBtn();
+    getData();
   }
 
   static hideSubmitBtn() {
@@ -186,8 +197,19 @@ export default class UI {
 
   static changeUnit() {
     const unit = document.getElementById("unit");
-    if (unit.textContent == "F") unit.textContent = "C";
-    else unit.textContent = "F";
+    if (unit.textContent == "F") {
+      unit.textContent = "C";
+      getData();
+    } else {
+      unit.textContent = "F";
+      getData();
+    }
+  }
+
+  static animateArrow(deg) {
+    const arrow = document.querySelector(".fa-arrow-up");
+    arrow.style.transform = `rotate(${deg}deg)`;
+    arrow.style.transition = "1.2s ease-in-out";
   }
 
   // WEATHER ICON TODO
@@ -206,11 +228,15 @@ export default class UI {
   // BACKGROUND TODO
   static setBgImage(weatherCode) {
     const images = {
-      sunny: "./assets/imgs/sunny.jpg",
+      clearDay: "./assets/imgs/sunny.jpg",
+      clearNight: "./assets/imgs/clear-night.jpg",
       cloudy: "./assets/imgs/cloudy.jpg",
+      lightCloudDay: "./assets/imgs/partly-cloudy-day.jpg",
+      lightCloudNight: "./assets/imgs/partly-cloudy-night.jpg",
       overcast: "./assets/imgs/overcast.jpg",
       lightRain: "./assets/imgs/light-rain.jpg",
       rain: "./assets/imgs/rain.jpg",
+      rainNight: "./assets/imgs/rain-night.jpg",
       thunderstorm: "./assets/imgs/thunderstorm.jpg",
       snow: "./assets/imgs/snow.jpg",
       blizzard: "./assets/imgs/blizzard.jpg",

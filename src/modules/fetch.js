@@ -19,7 +19,8 @@ export async function getData() {
 async function parseData(data) {
   try {
     let todayWeather = await data;
-    UI.displayData(todayWeather);
+    let unit = UI.getUnit();
+    UI.displayData(todayWeather, unit);
   } catch (error) {
     console.error(error.message);
   }

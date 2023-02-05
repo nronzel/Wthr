@@ -7,7 +7,6 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-size: 16px;
 }
 
 :root {
@@ -23,6 +22,7 @@
 body {
   height: 100vh;
   font-family: "Rubik", sans-serif;
+  font-size: 16px;
 }
 
 p {
@@ -67,7 +67,7 @@ h3 {
 }
 
 .main-container {
-  height: 900px;
+  /* height: 900px; */
   display: flex;
   flex-flow: column;
   justify-content: space-between;
@@ -107,6 +107,10 @@ h3 {
   color: var(--font-white);
 }
 
+.location {
+  font-size: calc(32px + (42 - 32) * ((100vw - 315px) / (1000 - 315)));
+}
+
 .location-header {
   display: flex;
   flex-flow: column;
@@ -119,7 +123,7 @@ h3 {
 }
 
 .current-temp {
-  font-size: 5rem;
+  font-size: calc(60px + (72 - 60) * ((100vw - 315px) / (1000 - 315)));
   color: var(--font-white);
 }
 
@@ -148,6 +152,21 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
+}
+
+.weather-data-header {
+  font-size: calc(16px + (26 - 16) * ((100vw - 315px) / (1600 - 315)));
+  color: hsl(0, 0%, 85%);
+}
+
+.weather-data-value {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.weather-data {
+  margin-bottom: 7px;
 }
 
 .input {
@@ -163,12 +182,12 @@ h3 {
 }
 
 .input > input {
-  background: hsla(0, 0%, 100%, 0.1);
+  background: hsla(0, 0%, 100%, 0.024);
   border-radius: 8px;
-  box-shadow: 0 2px 3px hsla(0, 0%, 0%, 0.2);
+  /* box-shadow: 0 2px 3px hsla(0, 0%, 0%, 0.2); */
   backdrop-filter: blur(10.2px);
   -webkit-backdrop-filter: blur(10.2px);
-  border: 1px solid hsla(0, 0%, 100%, 0.18);
+  border: 1px solid hsl(0, 0%, 100%);
   padding: 7px 9px;
   color: var(--font-white);
   font-weight: 800;
@@ -176,8 +195,8 @@ h3 {
 
 .input > input:focus,
 .input > input:active {
-  border: 2px solid rgba(255, 255, 255 0.2);
-  background: var(--bg-hover);
+  border: 1px solid rgba(255, 255, 255);
+  background: rgba(0, 0, 0, 0.1);
   outline: none;
 }
 
@@ -206,15 +225,14 @@ h3 {
 }
 
 .condition {
-  font-size: 1.3rem;
+  font-size: calc(32px + (42 - 32) * ((100vw - 315px) / (1000 - 315)));
   padding-bottom: 5px;
 }
 
-.small {
+.small-txt {
   font-size: 0.6rem;
-  color: rgb(193, 193, 193);
+  color: var(--font-white);
   font-weight: 400;
-  z-index: 3;
 }
 
 .glassify {
@@ -259,6 +277,12 @@ h3 {
 
 .fa-github:hover {
   transform: rotate(360deg) scale(1.2);
+}
+
+.fa-arrow-up {
+  color: var(--font-white);
+  font-size: 1.5rem;
+  /* transition: ease-in-out 1s; */
 }
 
 .footer-text {
