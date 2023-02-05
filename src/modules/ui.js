@@ -28,7 +28,7 @@ export default class UI {
 
     const units = UI.setPropertyUnits(unit, data);
 
-    UI.displayTodayTemp(container, units);
+    UI.displayTodayTemp(units, container);
     UI.displayWeatherStats(data, units, container);
     UI.displayWindStats(data, units, container);
 
@@ -39,7 +39,7 @@ export default class UI {
     UI.animateArrow(data.current.wind_degree);
   }
 
-  static displayTodayTemp(container, units) {
+  static displayTodayTemp(units, container) {
     const todayTempContainer = document.createElement("div");
     const feelsLikeContainer = document.createElement("div");
 
@@ -57,6 +57,18 @@ export default class UI {
 
     todayTempContainer.append(feelsLikeContainer);
     container.append(todayTempContainer);
+  }
+
+  static displayIcon(data, units) {
+    const icons = {
+      sun: "<i class='far fa-sun wicon'></i>",
+      thunderstorm: "<i class='fas fa-cloud-bolt wicon'></i>",
+      cloudy: "<i class='fas fa-cloud wicon'></i>",
+      snow: "<i class='fas fa-snowflake wicon'></i>",
+      rain: "<i class='fas fa-cloud-rain wicon'></i>",
+      heavyRain: "<i class='fas fa-cloud-showers-heavy wicon'></i>",
+      mist: "<i class='fas fa-smog wicon'></i>",
+    };
   }
 
   static displayWeatherStats(data, units, container) {
@@ -82,7 +94,7 @@ export default class UI {
 
     precipDiv.innerHTML = `
     <p class="weather-data-header">PRECIPITATION</p>
-    <p class="weather-data-value">${units.precip} ${units.precip_unit}</p>
+    <p class="weather-data-value">${units.precip} <span class="small-txt">${units.precip_unit}</span></p>
     `;
 
     // append items
@@ -115,6 +127,8 @@ export default class UI {
   }
 
   static getZip() {
+    // lookup tool: city,state -> zipcode
+    // https://tools.usps.com/zip-code-lookup.htm?bycitystate
     if (document.body.dataset) return document.body.dataset.lastZip;
     let input = document.getElementById("Zip");
     return input.textContent;
@@ -214,19 +228,6 @@ export default class UI {
     const arrow = document.querySelector(".fa-arrow-up");
     arrow.style.transform = `rotate(${deg}deg)`;
     arrow.style.transition = "1.2s ease-in-out";
-  }
-
-  // WEATHER ICON TODO
-  static getIcon() {
-    const icons = {
-      sun: "<i class='far fa-sun wicon'></i>",
-      thunderstorm: "<i class='fas fa-cloud-bolt wicon'></i>",
-      cloudy: "<i class='fas fa-cloud wicon'></i>",
-      snow: "<i class='fas fa-snowflake wicon'></i>",
-      rain: "<i class='fas fa-cloud-rain wicon'></i>",
-      heavyRain: "<i class='fas fa-cloud-showers-heavy wicon'></i>",
-      mist: "<i class='fas fa-smog wicon'></i>",
-    };
   }
 
   // BACKGROUND TODO

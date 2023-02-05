@@ -2,6 +2,7 @@ import UI from "./ui.js";
 
 export async function getData() {
   const zip = UI.getZip();
+  if (zip === undefined) return;
   const url = `https://api.weatherapi.com/v1/current.json?key=9efd72673aa64db4961180618232901&q=${zip}&aqi=no`;
 
   let response = await fetch(url, { mode: "cors" });
