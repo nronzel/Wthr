@@ -24,44 +24,25 @@ export default class UI {
 
     condition.classList.add("condition");
     container.classList.add("weather-container");
-    container.classList.add("glassify");
+    // container.classList.add("glassify");
     location.classList.add("location-container");
 
-    container.innerHTML = `
+    const units = UI.setPropertyUnits(UI.getUnit(), data);
+
+    UI.displayTodayTemp(container, units);
+
+    container.innerHTML += `
+
     <div class="data">
-      <p class="heading">Feels Like C</p><p>${data.current.feelslike_c}</p>
+      <p class="heading">Gust</p><p>${units.gust}${units.wind_unit}</p>
     </div>
 
     <div class="data">
-      <p class="heading">Feels Like F</p><p>${data.current.feelslike_f}</p>
+      <p class="heading">Humidity</p><p>${data.current.humidity}%</p>
     </div>
 
     <div class="data">
-      <p class="heading">Gust KPH</p><p>${data.current.gust_kph}</p>
-    </div>
-
-    <div class="data">
-      <p class="heading">Gust MPH</p><p>${data.current.gust_mph}</p>
-    </div>
-
-    <div class="data">
-      <p class="heading">Humidity</p><p>${data.current.humidity}</p>
-    </div>
-
-    <div class="data">
-      <p class="heading">Precip. Inches</p><p>${data.current.precip_in}</p>
-    </div>
-
-    <div class="data">
-      <p class="heading">Precip. MM</p><p>${data.current.precip_mm}</p>
-    </div>
-
-    <div class="data">
-      <p class="heading">Temp C</p><p>${data.current.temp_c}</p>
-    </div>
-
-    <div class="data">
-      <p class="heading">Temp F</p><p>${data.current.temp_f}</p>
+      <p class="heading">Precipitation</p><p>${units.precip}${units.precip_unit}</p>
     </div>
 
     <div class="data">
@@ -77,11 +58,7 @@ export default class UI {
     </div>
 
     <div class="data">
-      <p class="heading">Wind kph</p><p>${data.current.wind_kph}</p>
-    </div>
-
-    <div class="data">
-      <p class="heading">Wind mph</p><p>${data.current.wind_mph}</p>
+      <p class="heading">Wind</p><p>${units.currentWind}${units.wind_unit}</p>
     </div>
     `;
 
@@ -90,6 +67,22 @@ export default class UI {
     mainContainer.append(container);
   }
 
+  static displayTodayTemp(container, units) {
+    const todayTempContainer = document.createElement("div");
+    const feelsLikeContainer = document.createElement("div");
+
+    todayTempContainer.classList.add("temperature-stats");
+    feelsLikeContainer.classList.add("feels-like-container");
+
+    todayTempContainer.innerHTML = `<h1 class="current-temp">${units.currentTemp}${units.temp_unit}<h1>`;
+    feelsLikeContainer.innerHTML = `
+    <p>FEELS LIKE</p>
+    <p class="feels-like">${units.feelsLike}${units.temp_unit}</p>
+    `;
+
+    todayTempContainer.append(feelsLikeContainer);
+    container.append(todayTempContainer);
+  }
   static getZip() {
     let input = document.getElementById("Zip");
     return input.value;
@@ -103,10 +96,12 @@ export default class UI {
     btn.classList.remove("active");
   }
 
-  static setSubmitEventListener() {
+  static setEventListeners() {
     let submit = document.querySelector(".submit");
     let input = document.getElementById("Zip");
+    let unit = document.getElementById("unit");
 
+    unit.addEventListener("click", UI.changeUnit);
     input.addEventListener("keypress", (e) => {
       if (e.key === "Enter") submit.click();
     });
@@ -130,6 +125,58 @@ export default class UI {
     btn.classList.remove("active");
   }
 
+  // UNITS
+  static getUnit() {
+    const unit = document.getElementById("unit");
+    return unit.textContent;
+  }
+
+  static setPropertyUnits(unit, data) {
+    if (unit == "F") {
+      return {
+        temp_unit: unit,
+        wind_unit: "mph",
+        precip_unit: "in",
+        feelsLike: data.current.feelslike_f,
+        gust: data.current.gust_mph,
+        precip: data.current.precip_in,
+        currentTemp: data.current.temp_f,
+        currentWind: data.current.wind_mph,
+      };
+    } else {
+      return {
+        temp_unit: "C",
+        wind_unit: "kph",
+        precip_unit: "mm",
+        feelsLike: data.current.feelslike_c,
+        gust: data.current.gust_kph,
+        precip: data.current.precip_mm,
+        currentTemp: data.current.temp_c,
+        currentWind: data.current.wind_kph,
+      };
+    }
+  }
+
+  static changeUnit() {
+    const unit = document.getElementById("unit");
+    if (unit.textContent == "F") unit.textContent = "C";
+    else unit.textContent = "F";
+  }
+
+  // WEATHER ICON TODO
+  static getIcon() {
+    const icons = {
+      sun: "<i class='far fa-sun wicon'></i>",
+      thunderstorm: "<i class='fas fa-cloud-bolt wicon'></i>",
+      cloudy: "<i class='fas fa-cloud wicon'></i>",
+      snow: "<i class='fas fa-snowflake wicon'></i>",
+      rain: "<i class='fas fa-cloud-rain wicon'></i>",
+      heavyRain: "<i class='fas fa-cloud-showers-heavy wicon'></i>",
+      mist: "<i class='fas fa-smog wicon'></i>",
+    };
+  }
+
+  // BACKGROUND TODO
   static setBgImage(weatherCode) {
     const images = {
       sunny: "./assets/imgs/sunny.jpg",
