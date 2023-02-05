@@ -1,4 +1,4 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&display=swap");
 
@@ -23,7 +23,7 @@
   /* courtesy of https://css-tricks.com/snippets/css/fluid-typography/ */
   /* formula: calc([min size] + ([max size] - [min size]) * ((100vw - [min vw]) / ([max vh] - [min vw]))); */
   --small-font: calc(32px + (42 - 32) * ((100vw - 315px) / (1000 - 315)));
-  --medium-font: calc(32px + (42 - 32) * ((100vw - 315px) / (1000 - 315)));
+  --medium-font: calc(24px + (30 - 24) * ((100vw - 315px) / (1000 - 315)));
   --large-font: calc(32px + (42 - 32) * ((100vw - 315px) / (1000 - 315)));
   --x-large-font: calc(72px + (83 - 72) * ((100vw - 315px) / (1000 - 315)));
 }
@@ -95,6 +95,7 @@ input {
   outline: none;
   text-align: center;
 }
+
 .background {
   position: fixed;
   top: 0;
@@ -105,6 +106,12 @@ input {
   z-index: -1;
   border: none;
   outline: none;
+}
+
+/* HEADER */
+.logo {
+  font-size: 30px;
+  font-family: "Rubik", sans-serif;
 }
 
 .main-container {
@@ -328,7 +335,7 @@ input {
   width: var(--width);
   height: var(--height);
   border-radius: var(--border-radius);
-  background: hsla(62, 100%, 70%, 0.706);
+  background: hsla(0, 0%, 100%, 0.706);
   transition: background 0.2s;
 }
 
@@ -346,7 +353,7 @@ input {
 }
 
 .toggle__input:checked ~ .toggle__fill {
-  background: hsla(189, 100%, 85%, 0.663);
+  background: hsla(62, 87%, 94%, 0.663);
   z-index: 3;
 }
 
