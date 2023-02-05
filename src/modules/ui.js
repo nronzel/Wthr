@@ -30,37 +30,8 @@ export default class UI {
     const units = UI.setPropertyUnits(UI.getUnit(), data);
 
     UI.displayTodayTemp(container, units);
-
-    container.innerHTML += `
-
-    <div class="data">
-      <p class="heading">Gust</p><p>${units.gust}${units.wind_unit}</p>
-    </div>
-
-    <div class="data">
-      <p class="heading">Humidity</p><p>${data.current.humidity}%</p>
-    </div>
-
-    <div class="data">
-      <p class="heading">Precipitation</p><p>${units.precip}${units.precip_unit}</p>
-    </div>
-
-    <div class="data">
-      <p class="heading">UV</p><p>${data.current.uv}</p>
-    </div>
-
-    <div class="data">
-      <p class="heading">Wind Deg</p><p>${data.current.wind_degree}</p>
-    </div>
-
-    <div class="data">
-      <p class="heading">Wind Dir</p><p>${data.current.wind_dir}</p>
-    </div>
-
-    <div class="data">
-      <p class="heading">Wind</p><p>${units.currentWind}${units.wind_unit}</p>
-    </div>
-    `;
+    UI.displayWeatherStats(data, units, container);
+    UI.displayWindStats(data, units, container);
 
     mainContainer.append(location);
     mainContainer.append(condition);
@@ -83,6 +54,62 @@ export default class UI {
     todayTempContainer.append(feelsLikeContainer);
     container.append(todayTempContainer);
   }
+
+  static displayWeatherStats(data, units, container) {
+    const weatherStatsContainer = document.createElement("div");
+    const humidityDiv = document.createElement("div");
+    const uvDiv = document.createElement("div");
+    const precipDiv = document.createElement("div");
+
+    weatherStatsContainer.classList.add("weather-stats-container");
+    humidityDiv.classList.add("weather-data");
+    uvDiv.classList.add("weather-data");
+    precipDiv.classList.add("weather-data");
+
+    humidityDiv.innerHTML = `
+    <p class="weather-data-header">Humidity</p>
+    <p class="weather-data-value">${data.current.humidity}%</p>
+    `;
+
+    uvDiv.innerHTML = `
+    <p class="weather-data-header">UV Index</p>
+    <p class="weather-data-value">${data.current.uv}</p>
+    `;
+
+    precipDiv.innerHTML = `
+    <p class="weather-data-header">Precipitation</p>
+    <p class="weather-data-value">${units.precip}${units.precip_unit}</p>
+    `;
+
+    // append items
+    weatherStatsContainer.append(humidityDiv);
+    weatherStatsContainer.append(uvDiv);
+    weatherStatsContainer.append(precipDiv);
+    container.append(weatherStatsContainer);
+  }
+
+  static displayWindStats(data, units, container) {
+    const windStatsContainer = document.createElement("div");
+    const windStats = document.createElement("div");
+
+    // add classes
+    windStatsContainer.classList.add("wind-stats-container");
+    windStats.classList.add("wind-stats");
+
+    // add content
+    windStatsContainer.innerHTML = `<p class="weather-data-header">Wind</p>`;
+    windStats.innerHTML = `
+    <p class="weather-data-value">${data.current.wind_dir}</p>
+    <i class="fas fa-arrow-up"></i>
+    <p class="weather-data-value">${units.currentWind}${units.wind_unit}</p>
+    <p class="weather-data-value">${units.gust}${units.wind_unit}</p>
+    `;
+
+    // append
+    windStatsContainer.append(windStats);
+    container.append(windStatsContainer);
+  }
+
   static getZip() {
     let input = document.getElementById("Zip");
     return input.value;
