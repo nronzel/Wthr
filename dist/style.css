@@ -196,13 +196,12 @@ input {
 .wind-data-header {
   font-size: var(--small-font);
   color: hsl(0, 0%, 100%);
-  font-weight: 300;
-  border-bottom: 1px solid var(--font-white);
+  font-weight: 200;
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.144); */
 }
 
 .wind-data-header {
   border: none;
-  margin-bottom: -12px;
 }
 
 .weather-data-value,
@@ -218,6 +217,10 @@ input {
 
 .wind-data-header {
   font-weight: 200;
+}
+
+.wind-main-container > .weather-data-header {
+  font-weight: 300;
 }
 
 .header {
