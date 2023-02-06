@@ -39,6 +39,18 @@ export default class UI {
     UI.animateArrow(data);
   }
 
+  static displayIcon(data, units) {
+    const icons = {
+      sun: "<i class='far fa-sun wicon'></i>",
+      thunderstorm: "<i class='fas fa-cloud-bolt wicon'></i>",
+      cloudy: "<i class='fas fa-cloud wicon'></i>",
+      snow: "<i class='fas fa-snowflake wicon'></i>",
+      rain: "<i class='fas fa-cloud-rain wicon'></i>",
+      heavyRain: "<i class='fas fa-cloud-showers-heavy wicon'></i>",
+      mist: "<i class='fas fa-smog wicon'></i>",
+    };
+  }
+
   static displayTodayTemp(units, container) {
     const todayTempContainer = document.createElement("div");
     const feelsLikeContainer = document.createElement("div");
@@ -57,18 +69,6 @@ export default class UI {
 
     todayTempContainer.append(feelsLikeContainer);
     container.append(todayTempContainer);
-  }
-
-  static displayIcon(data, units) {
-    const icons = {
-      sun: "<i class='far fa-sun wicon'></i>",
-      thunderstorm: "<i class='fas fa-cloud-bolt wicon'></i>",
-      cloudy: "<i class='fas fa-cloud wicon'></i>",
-      snow: "<i class='fas fa-snowflake wicon'></i>",
-      rain: "<i class='fas fa-cloud-rain wicon'></i>",
-      heavyRain: "<i class='fas fa-cloud-showers-heavy wicon'></i>",
-      mist: "<i class='fas fa-smog wicon'></i>",
-    };
   }
 
   static displayWeatherStats(data, units, container) {
@@ -180,6 +180,7 @@ export default class UI {
     mainContainer.innerHTML = "";
   }
 
+  // SUBMIT BTN
   static showSubmitBtn() {
     let btn = document.querySelector(".submit");
     btn.classList.add("active");
@@ -257,27 +258,102 @@ export default class UI {
     return time.getHours();
   }
 
-  // BACKGROUND TODO
+  // BACKGROUND
   static setBgImage(weatherCode) {
-    const images = {
-      clearDay: "./assets/imgs/sunny.jpg",
+    const nightImages = {
       clearNight: "./assets/imgs/clear-night.jpg",
+      lightCloudNight: "./assets/imgs/partly-cloudy-night.jpg",
+      overcastNight: "./assets/imgs/overcast-night.jpg",
+      rainNight: "./assets/imgs/rain-night.jpg",
+      snowNight: "./assets/imgs/snow-night.jpg",
+      blizzardNight: "./assets/imgs/blizzard-night.jpg",
+      fogNight: "./assets/imgs/fog-night.jpg",
+    };
+
+    const dayImages = {
+      clearDay: "./assets/imgs/sunny.jpg",
       cloudy: "./assets/imgs/cloudy.jpg",
       lightCloudDay: "./assets/imgs/partly-cloudy-day.jpg",
-      lightCloudNight: "./assets/imgs/partly-cloudy-night.jpg",
       overcast: "./assets/imgs/overcast.jpg",
-      overcastNight: "./assets/imgs/overcast-night.jpg",
       lightRain: "./assets/imgs/light-rain.jpg",
       rain: "./assets/imgs/rain.jpg",
-      rainNight: "./assets/imgs/rain-night.jpg",
       thunderstorm: "./assets/imgs/thunderstorm.jpg",
       snow: "./assets/imgs/snow.jpg",
-      snowNight: "./assets/imgs/snow-night.jpg",
       blizzard: "./assets/imgs/blizzard.jpg",
       fog: "./assets/imgs/fog.jpg",
     };
 
+    let timeOfDay = UI.checkDayOrNight();
+    let weatherCondition = UI.getWeatherCondition(weatherCode);
+    if (timeOfDay == "day") {
+      let image = "";
+      let bg = document.getElementById("Background");
+      if (weatherCondition == "clear") image += dayImages.clearDay;
+      if (weatherCondition == "partly-cloudy") image += dayImages.lightCloudDay;
+      if (weatherCondition == "overcast") image += dayImages.overcast;
+      if (weatherCondition == "blizzard") image += dayImages.blizzard;
+      if (weatherCondition == "light-rain") image += dayImages.lightRain;
+      if (weatherCondition == "rain") image += dayImages.rain;
+      if (weatherCondition == "thunderstorm") image += dayImages.thunderstorm;
+      if (weatherCondition == "snow") image += dayImages.snow;
+      if (weatherCondition == "fog") image += dayImages.fog;
+      bg.src = image;
+      return image;
+    } else if (timeOfDay == "night") {
+      let image = "";
+      let bg = document.getElementById("Background");
+      if (weatherCondition == "clear") image += nightImages.clearNight;
+      if (weatherCondition == "partly-cloudy")
+        image += nightImages.lightCloudNight;
+      if (weatherCondition == "overcast") image += nightImages.overcastNight;
+      if (weatherCondition == "blizzard") image += nightImages.blizzardNight;
+      if (weatherCondition == "light-rain") image += nightImages.rainNight;
+      if (weatherCondition == "rain") image += nightImages.rainNight;
+      if (weatherCondition == "thunderstorm") image += nightImages.rainNight;
+      if (weatherCondition == "snow") image += nightImages.snowNight;
+      if (weatherCondition == "fog") image += nightImages.fogNight;
+      bg.src = image;
+      return image;
+    } else {
+      // default image
+      let bg = document.getElementById("Background");
+      console.log("default image");
+    }
+  }
+
+  static getWeatherCondition(weatherCode) {
+    const lightRain = [
+      1063, 1069, 1072, 1150, 1153, 1168, 1171, 1180, 1183, 1198, 1204, 1240,
+      1249,
+    ];
+    const rain = [1186, 1189, 1192, 1195, 1201, 1207, 1243, 1246, 1252];
+    const thunderstorm = [1087, 1273, 1276];
+    const snow = [
+      1066, 1114, 1210, 1213, 1216, 1219, 1222, 1225, 1237, 1255, 1258, 1261,
+      1264,
+    ];
+    const fog = [1030, 1135, 1147];
+    const miscCodes = {
+      1000: "clear",
+      1003: "partly-cloudy",
+      1009: "overcast",
+      1117: "blizzard",
+    };
+
+    if (weatherCode in miscCodes) return miscCodes[weatherCode];
+    if (lightRain.includes(weatherCode)) return "light-rain";
+    if (rain.includes(weatherCode)) return "rain";
+    if (thunderstorm.includes(weatherCode)) return "thunderstorm";
+    if (snow.includes(weatherCode)) return "snow";
+    if (fog.includes(weatherCode)) return "fog";
+  }
+
+  static checkDayOrNight() {
     const hour = UI.getTimeHour();
-    // if (time)
+    const day = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+    // const night = [19, 20, 21, 22, 23, 0, 1, 2, 3, 4, 5];
+
+    if (day.includes(hour)) return "day";
+    else return "night";
   }
 }
