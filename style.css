@@ -417,7 +417,7 @@ input {
 }
 
 footer {
-  height: 70px;
+  height: 40px;
   position: absolute;
   bottom: 0;
   z-index: 3;
