@@ -200,6 +200,11 @@ input {
   border-bottom: 1px solid var(--font-white);
 }
 
+.wind-data-header {
+  border: none;
+  margin-bottom: -12px;
+}
+
 .weather-data-value,
 .wind-data-value {
   font-size: var(--medium-font);
