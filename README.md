@@ -6,6 +6,8 @@ If you find this app useful, or just like the design, consider giving this repo 
 
 > \*\* I fully understand the API key is published in the code, and the implications of this. This is a free account with no payment information tied to it. If the key is compromised a new one will be generated if it becomes an issue. WeatherAPI free tier currently allows 1M requests/month and I don't expect to come close to that limit.
 
+![screenshot](./dist/assets/imgs/screen-shot.png)
+
 ## Features
 
 ✔️ Automatically gets current weather based on IP address
@@ -24,7 +26,7 @@ If you find this app useful, or just like the design, consider giving this repo 
 
 ## How To Use
 
-Visit the [live preview]() of the site, courtesy of Github Pages.
+Visit the [live preview]("https://nronzel.github.io/Wthr/") of the site, courtesy of Github Pages.
 
 It should automatically get the weather for you based on IP address.
 
