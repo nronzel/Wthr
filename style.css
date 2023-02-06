@@ -35,6 +35,11 @@ body {
   font-size: 16px;
 }
 
+a {
+  text-decoration: none;
+  color: var(--font-white);
+}
+
 p {
   text-align: center;
   color: var(--font-white);
@@ -410,6 +415,7 @@ footer {
   cursor: default;
 }
 
+/* RIPPLE */
 .lds-ripple {
   display: inline-block;
   position: relative;
@@ -417,6 +423,7 @@ footer {
   height: 80px;
   top: 100px;
 }
+
 .lds-ripple div {
   position: absolute;
   border: 4px solid var(--font-white);
@@ -459,6 +466,21 @@ footer {
   }
 }
 
+/* FADE EFFECT */
+.fade-in {
+  animation: fadeIn ease 1.5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* MEDIA */
 @media (max-width: 650px) {
   .weather-container {
     grid-template-columns: repeat(2, 1.5fr);
