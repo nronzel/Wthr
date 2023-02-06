@@ -22,6 +22,7 @@
   /* responsive font sizes */
   /* courtesy of https://css-tricks.com/snippets/css/fluid-typography/ */
   /* formula: calc([min size] + ([max size] - [min size]) * ((100vw - [min vw]) / ([max vh] - [min vw]))); */
+  --xx-small-font: calc(8px + (12 - 8) * ((100vw - 315px) / (1600 - 315)));
   --x-small-font: calc(16px + (20 - 16) * ((100vw - 315px) / (1600 - 315)));
   --small-font: calc(18px + (26 - 18) * ((100vw - 315px) / (1600 - 315)));
   --medium-font: calc(24px + (30 - 24) * ((100vw - 315px) / (1000 - 315)));
@@ -33,6 +34,7 @@ body {
   height: 100vh;
   font-family: "Jost", sans-serif;
   font-size: 16px;
+  overflow: hidden;
 }
 
 a {
@@ -387,7 +389,7 @@ input {
 }
 
 .fa-github {
-  font-size: 20px;
+  font-size: var(--x-small-font);
   color: var(--font-white);
   transition: transform 0.3s ease-in-out;
 }
@@ -407,7 +409,7 @@ input {
 }
 
 .footer-text {
-  font-size: 0.8rem;
+  font-size: var(--xx-small-font);
 }
 
 footer {
