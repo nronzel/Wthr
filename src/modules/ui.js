@@ -271,7 +271,7 @@ export default class UI {
     };
 
     const dayImages = {
-      clearDay: "./assets/imgs/sunny.jpg",
+      clearDay: "./assets/imgs/sun.jpg",
       cloudy: "./assets/imgs/cloudy.jpg",
       lightCloudDay: "./assets/imgs/partly-cloudy-day.jpg",
       overcast: "./assets/imgs/overcast.jpg",
@@ -318,6 +318,7 @@ export default class UI {
       // default image
       let bg = document.getElementById("Background");
       console.log("default image");
+      bg.src = "./assets/imgs/default.jpg";
     }
   }
 
@@ -351,7 +352,6 @@ export default class UI {
   static checkDayOrNight() {
     const hour = UI.getTimeHour();
     const day = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
-    // const night = [19, 20, 21, 22, 23, 0, 1, 2, 3, 4, 5];
 
     if (day.includes(hour)) return "day";
     else return "night";
