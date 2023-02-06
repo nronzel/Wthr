@@ -303,8 +303,7 @@ export default class UI {
       if (weatherCondition == "snow") image += dayImages.snow;
       if (weatherCondition == "fog") image += dayImages.fog;
       bg.src = image;
-      defaultBg.classList.toggle("hidden");
-      defaultBg.src = image;
+      defaultBg.classList.add("hidden");
       return image;
     } else if (timeOfDay == "night") {
       let image = "";
@@ -321,8 +320,7 @@ export default class UI {
       if (weatherCondition == "snow") image += nightImages.snowNight;
       if (weatherCondition == "fog") image += nightImages.fogNight;
       bg.src = image;
-      defaultBg.classList.toggle("hidden");
-      defaultBg.src = image;
+      defaultBg.classList.add("hidden");
       return image;
     } else {
       // default image

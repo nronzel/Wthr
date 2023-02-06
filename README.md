@@ -26,7 +26,7 @@ If you find this app useful, or just like the design, consider giving this repo 
 
 ## How To Use
 
-Visit the [live preview]("https://nronzel.github.io/Wthr/") of the site, courtesy of Github Pages.
+Visit the [Live Preview](https://nronzel.github.io/Wthr/) of the site, courtesy of Github Pages.
 
 It should automatically get the weather for you based on IP address.
 
