@@ -95,8 +95,21 @@ input {
   font-weight: 300;
 }
 
+.hidden {
+  opacity: 0;
+}
+
+#Background1 {
+  transition: opacity 1s ease-in-out;
+  z-index: -1;
+}
+
+#Background2 {
+  z-index: -1;
+}
+
 .background {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   height: 100vh;
@@ -107,6 +120,10 @@ input {
   outline: none;
 }
 
+.background-container {
+  background-color: rgb(22, 22, 22);
+}
+
 /* HEADER */
 .logo {
   font-size: 30px;
@@ -114,7 +131,6 @@ input {
 }
 
 .main-container {
-  /* height: 900px; */
   display: flex;
   flex-flow: column;
   justify-content: space-between;
@@ -125,14 +141,6 @@ input {
 }
 
 .weather-container {
-  /* display: grid;
-  grid-template-columns: repeat(3, 1.5fr);
-  grid-template-rows: auto;
-  grid-auto-flow: row; */
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
   z-index: 2;
   padding: 1.2rem;
 }
@@ -471,12 +479,25 @@ footer {
   animation: fadeIn ease 1.5s;
 }
 
+.fade-out {
+  animation: fadeOut ease 1.5s;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opactiy: 0;
   }
 }
 
