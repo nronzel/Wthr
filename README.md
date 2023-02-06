@@ -53,6 +53,14 @@ These parameters are directly from the WeatherApi documentation.
 - daily 3 day forecast
 - more responsive for larger screens (I'd like the main data to spread out more on a larger screen)
 
+## Notes From the Author
+
+I made this app after initially making another app using openweathermap-api for the Odin Project. The original app was simple and I found it useful for getting the weather quickly before I go golfing, but the API felt cumbersome when I wanted to expand and add features.
+
+With WeatherAPI I found it much easier to work with and gives me better data, so I re-wrote the app into what this is. I wanted something that had a dynamic background image that changed based on the weather and current time of day. As a golfer, the more granular wind data is important to me and I wanted to keep the UI clean and minimalist.
+
+I plan on implementing tabs, one for daily (3 day) forecast, and one for hourly forecast for the next X hours (haven't decided how many yet, likely 24).
+
 ## Credits
 
 https://www.weatherapi.com/ - API used for weather data. Very easy to use, provides a lot of data for the free tier, and caps out at 1M requests/month for free.
