@@ -51,6 +51,7 @@ These parameters are directly from the WeatherApi documentation.
 
 - hourly forecast
 - daily 3 day forecast
+- more responsive for larger screens (I'd like the main data to spread out more on a larger screen)
 
 ## Credits
 
