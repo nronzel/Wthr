@@ -22,7 +22,7 @@
   /* responsive font sizes */
   /* courtesy of https://css-tricks.com/snippets/css/fluid-typography/ */
   /* formula: calc([min size] + ([max size] - [min size]) * ((100vw - [min vw]) / ([max vh] - [min vw]))); */
-  --xx-small-font: calc(8px + (12 - 8) * ((100vw - 315px) / (1600 - 315)));
+  --xx-small-font: calc(10px + (12 - 10) * ((100vw - 315px) / (1600 - 315)));
   --x-small-font: calc(16px + (20 - 16) * ((100vw - 315px) / (1600 - 315)));
   --small-font: calc(18px + (26 - 18) * ((100vw - 315px) / (1600 - 315)));
   --medium-font: calc(24px + (30 - 24) * ((100vw - 315px) / (1000 - 315)));
@@ -412,8 +412,12 @@ input {
   font-size: var(--xx-small-font);
 }
 
+.footer {
+  gap: 1rem;
+}
+
 footer {
-  height: 50px;
+  height: 70px;
   position: absolute;
   bottom: 0;
   z-index: 3;
