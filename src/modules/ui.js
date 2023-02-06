@@ -24,6 +24,7 @@ export default class UI {
 
     condition.classList.add("condition");
     container.classList.add("weather-container");
+    container.classList.add("flex-column");
     // container.classList.add("glassify");
     location.classList.add("location-container");
 
@@ -285,9 +286,13 @@ export default class UI {
 
     let timeOfDay = UI.checkDayOrNight();
     let weatherCondition = UI.getWeatherCondition(weatherCode);
+    const defaultBg = document.getElementById("Background1");
+
     if (timeOfDay == "day") {
       let image = "";
-      let bg = document.getElementById("Background");
+      let bg = document.getElementById("Background2");
+
+      bg.classList.remove("hidden");
       if (weatherCondition == "clear") image += dayImages.clearDay;
       if (weatherCondition == "partly-cloudy") image += dayImages.lightCloudDay;
       if (weatherCondition == "overcast") image += dayImages.overcast;
@@ -298,10 +303,13 @@ export default class UI {
       if (weatherCondition == "snow") image += dayImages.snow;
       if (weatherCondition == "fog") image += dayImages.fog;
       bg.src = image;
+      defaultBg.classList.toggle("hidden");
+      defaultBg.src = image;
       return image;
     } else if (timeOfDay == "night") {
       let image = "";
       let bg = document.getElementById("Background");
+
       if (weatherCondition == "clear") image += nightImages.clearNight;
       if (weatherCondition == "partly-cloudy")
         image += nightImages.lightCloudNight;
@@ -313,6 +321,8 @@ export default class UI {
       if (weatherCondition == "snow") image += nightImages.snowNight;
       if (weatherCondition == "fog") image += nightImages.fogNight;
       bg.src = image;
+      defaultBg.classList.toggle("hidden");
+      defaultBg.src = image;
       return image;
     } else {
       // default image
