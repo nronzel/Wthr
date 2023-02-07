@@ -49,9 +49,11 @@ These parameters are directly from the WeatherApi documentation.
 
 ## Upcoming
 
+- error tooltip if entered search term is invalid
 - hourly forecast
 - daily 3 day forecast
 - more responsive for larger screens (I'd like the main data to spread out more on a larger screen)
+- potentially search suggestion as the API allows it, haven't checked it out much yet but will look into implementing
 
 ## Notes From the Author
 
