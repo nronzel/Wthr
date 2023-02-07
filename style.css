@@ -328,7 +328,7 @@ input {
 
 .date {
   position: absolute;
-  top: 0.6rem;
+  top: 1rem;
 }
 
 .condition {
@@ -460,7 +460,7 @@ input {
 
 .wicon {
   max-width: 100%;
-  margin: 15px -5px -25px -5px;
+  margin: 5px -5px -25px -5px;
 }
 
 .footer-text {
@@ -563,7 +563,7 @@ footer {
 
   .daily-data-container {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin-top: 12px;
+    margin-top: 30px;
   }
 
   .wicon {
