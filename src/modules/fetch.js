@@ -1,10 +1,10 @@
 import UI from "./ui.js";
 
 export async function getData() {
-  let zip = UI.getZip();
-  if (zip === undefined) zip = "auto:ip";
+  let location = UI.getLocation();
+  // if (location === undefined) zip = "auto:ip";
 
-  const url = `https://api.weatherapi.com/v1/current.json?key=9efd72673aa64db4961180618232901&q=${zip}&aqi=no`;
+  const url = `https://api.weatherapi.com/v1/current.json?key=9efd72673aa64db4961180618232901&q=${location}&aqi=no`;
 
   let response = await fetch(url, { mode: "cors" });
   let data = await response.json();
@@ -15,4 +15,17 @@ export async function getData() {
   };
 
   return weatherInfo;
+}
+
+export async function getDailyAndHourlyData() {
+  let location = UI.getLocation();
+  // if (location === undefined) location = "auto:ip";
+
+  // gets forecast for next 3 days with daily, hourly, and astr info
+  const url = `https://api.weatherapi.com/v1/forecast.json?key=9efd72673aa64db4961180618232901&q=${location}&days=4&aqi=no`;
+
+  const response = await fetch(url, { mode: "cors" });
+  const data = await response.json();
+
+  return data.forecast;
 }

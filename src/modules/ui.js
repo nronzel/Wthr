@@ -1,9 +1,12 @@
-import { getData } from "./fetch.js";
+import { getData, getDailyAndHourlyData } from "./fetch.js";
 
 export default class UI {
   static async displayData() {
     const unit = UI.getUnit();
     const data = await getData();
+
+    UI.getDailyForecast();
+
     UI.clearScreen();
     UI.setBgImage(data.current.condition.code);
 
@@ -40,6 +43,12 @@ export default class UI {
     UI.animateArrow(data);
   }
 
+  static async getDailyForecast() {
+    const forecast = await getDailyAndHourlyData();
+    const threeDayForecast = forecast.forecastday.slice(1);
+
+    console.log(threeDayForecast);
+  }
   static displayTodayTemp(units, container) {
     const todayTempContainer = document.createElement("div");
     const feelsLikeContainer = document.createElement("div");
@@ -135,12 +144,14 @@ export default class UI {
     container.append(windMainContainer);
   }
 
-  static getZip() {
-    // lookup tool: city,state -> zipcode
-    // https://tools.usps.com/zip-code-lookup.htm?bycitystate
-    if (document.body.dataset) return document.body.dataset.lastZip;
+  static getLocation() {
     let input = document.getElementById("Zip");
-    return input.textContent;
+
+    if (document.body.dataset.lastZip !== undefined)
+      return document.body.dataset.lastZip;
+    if (input.value !== "") return input.textContent;
+
+    return "auto:ip";
   }
 
   static clearInput() {
