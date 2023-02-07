@@ -141,6 +141,25 @@ input {
   padding-top: 3rem;
 }
 
+.secondary-container {
+  border: 1px solid red;
+  gap: 1.5rem;
+  z-index: 3;
+}
+
+.daily-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  color: var(--font-white);
+  z-index: inherit;
+  border: 1px solid pink;
+  padding: 12px;
+  gap: 8px;
+}
+
 .weather-container {
   z-index: 2;
   padding: 1.2rem;
@@ -192,6 +211,17 @@ input {
   display: flex;
   justify-content: center;
   gap: 4px;
+}
+
+.daily-data {
+  font-size: var(--small-font);
+  font-weight: 300;
+}
+
+.daily-data-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 3vw;
 }
 
 .feels-like {
@@ -282,6 +312,13 @@ input {
   font-weight: 300;
 }
 
+.date {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+}
+
 .condition {
   font-size: var(--large-font);
   padding-bottom: 5px;
@@ -328,15 +365,8 @@ input {
 
 /* TOGGLE SWITCH */
 #Toggle {
-  position: absolute;
-  bottom: 2vh;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 10px 12px;
+  z-index: 3;
 }
 
 .toggle {
@@ -412,6 +442,10 @@ input {
   font-size: 20px;
 }
 
+.wicon {
+  max-width: 100%;
+}
+
 .footer-text {
   font-size: var(--xx-small-font);
 }
@@ -421,8 +455,8 @@ input {
 }
 
 footer {
-  height: 40px;
-  position: absolute;
+  /* height: 40px; */
+  position: fixed;
   bottom: 0;
   z-index: 3;
   display: flex;
@@ -515,6 +549,16 @@ footer {
 @media (max-width: 650px) {
   .weather-container {
     grid-template-columns: repeat(2, 1.5fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .secondary-container {
+    flex-flow: column;
+  }
+
+  .daily-container {
+    flex-flow: row;
   }
 }
 

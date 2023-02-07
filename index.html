@@ -17,7 +17,7 @@
     <img id="Background1" class="background" src="./assets/imgs/default-grey.png" alt="default">
   </div>
   <div class="header">
-    <p class="logo">Wthr</p>
+    <p class="logo">Wthrr</p>
     <!-- <button id="unit">F</button> -->
     <input class="glassify" type="text" name="zip" id="Zip" placeholder="zip/city/airport">
     <button class="submit"><i class="fas fa-check"></i></button>
@@ -28,20 +28,58 @@
       <div></div>
     </div>
   </div>
-  <div class="overlay"></div>
-  <div id="Toggle" class="glassify">
-    <label class="toggle" for="myToggle">
-      <input class="toggle__input" name="toggle" type="checkbox" id="myToggle">
-      <div class="toggle__fill"></div>
-    </label>
-    <p id="unit">F</p>
+
+  <div class="secondary-container flex">
+    <div class="daily-container">
+      <p class="weather-data-header date">02/08</p>
+      <img class="wicon" src="https://cdn.weatherapi.com/weather/128x128/day/119.png" alt="test">
+      <div class="daily-data-container">
+        <p class="daily-data">3453</p>
+        <p class="daily-data">345345</p>
+        <p class="daily-data">345345</p>
+        <p class="daily-data">345345</p>
+        <p class="daily-data">345345</p>
+      </div>
+    </div>
+    <div class="daily-container">
+      <p class="weather-data-header date">02/09</p>
+
+      <img class="wicon" src="https://cdn.weatherapi.com/weather/128x128/day/119.png" alt="test">
+      <div class="daily-data-container">
+        <p class="daily-data">3453</p>
+        <p class="daily-data">345345</p>
+        <p class="daily-data">345345</p>
+        <p class="daily-data">345345</p>
+        <p class="daily-data">345345</p>
+      </div>
+    </div>
+    <div class="daily-container">
+      <p class="weather-data-header date">02/10</p>
+      <img class="wicon" src="https://cdn.weatherapi.com/weather/128x128/day/119.png" alt="test">
+      <div class="daily-data-container">
+        <p class="daily-data">3453</p>
+        <p class="daily-data">345345</p>
+        <p class="daily-data">345345</p>
+        <p class="daily-data">345345</p>
+        <p class="daily-data">345345</p>
+      </div>
+    </div>
   </div>
+
+  <div class="overlay"></div>
   <footer class="flex-column">
+    <div id="Toggle" class="glassify flex">
+      <label class="toggle" for="myToggle">
+        <input class="toggle__input" name="toggle" type="checkbox" id="myToggle">
+        <div class="toggle__fill"></div>
+      </label>
+      <p id="unit">F</p>
+    </div>
     <div class="footer flex">
       <p class="footer-text">Copyright © 2023</p>
       <a class="github-logo" href="https://github.com/nronzel" target="_blank">
         <i class="fab fa-github"></i>
-        <p class="footer-text"><a href="https://www.weatherapi.com/"><span class="thin-txt">built with
+        <p class="footer-text"><a href="https://www.weatherapi.com/"><span class="thin-txt">weather by
             </span>weatherapi.com</a></p>
         <p class="footer-text"><a href="https://unsplash.com"><span class="thin-txt">photos by </span>unsplash</a></p>
       </a>
