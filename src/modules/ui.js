@@ -268,7 +268,7 @@ export default class UI {
       rainNight: "./assets/imgs/rain-night.jpg",
       snowNight: "./assets/imgs/snow-night.jpg",
       blizzardNight: "./assets/imgs/blizzard-night.jpg",
-      fogNight: "./assets/imgs/fog-night.jpg",
+      fogNight: "./assets/imgs/night-fog.jpg",
     };
 
     const dayImages = {
