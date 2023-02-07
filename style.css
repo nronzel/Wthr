@@ -223,7 +223,7 @@ input {
 .daily-data,
 .daily-data-header {
   font-size: var(--x-small-font);
-  font-weight: 300;
+  font-weight: 400;
   text-align: left;
 }
 
@@ -256,10 +256,6 @@ input {
   font-size: var(--small-font);
   color: hsl(0, 0%, 100%);
   font-weight: 200;
-}
-
-.wind-data-header {
-  border: none;
 }
 
 .weather-data-value,
@@ -331,8 +327,8 @@ input {
 }
 
 .date {
-  position: relative;
-  top: 0;
+  position: absolute;
+  top: 0.6rem;
 }
 
 .condition {
@@ -348,6 +344,10 @@ input {
 
 .med-txt {
   font-size: var(--small-font);
+}
+
+.midweight {
+  font-weight: 400;
 }
 
 .glassify {
@@ -460,7 +460,7 @@ input {
 
 .wicon {
   max-width: 100%;
-  margin: -20px 0px;
+  margin: 15px -5px -25px -5px;
 }
 
 .footer-text {
@@ -561,8 +561,14 @@ footer {
     flex-flow: row;
   }
 
+  .daily-data-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: 12px;
+  }
+
   .wicon {
     max-width: 65%;
+    margin-top: 0px;
   }
 }
 
