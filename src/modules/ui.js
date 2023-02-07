@@ -19,7 +19,7 @@ export default class UI {
 
     condition.innerHTML = `
     <p class="condition">${data.current.condition.text}</p>
-    <p class="small-txt">Last Updated ${data.current.last_updated}</p>
+    <p class="small-txt last-updated">Last Updated ${data.current.last_updated}</p>
     `;
 
     condition.classList.add("condition");
@@ -38,18 +38,6 @@ export default class UI {
     mainContainer.append(condition);
     mainContainer.append(container);
     UI.animateArrow(data);
-  }
-
-  static displayIcon(data, units) {
-    const icons = {
-      sun: "<i class='far fa-sun wicon'></i>",
-      thunderstorm: "<i class='fas fa-cloud-bolt wicon'></i>",
-      cloudy: "<i class='fas fa-cloud wicon'></i>",
-      snow: "<i class='fas fa-snowflake wicon'></i>",
-      rain: "<i class='fas fa-cloud-rain wicon'></i>",
-      heavyRain: "<i class='fas fa-cloud-showers-heavy wicon'></i>",
-      mist: "<i class='fas fa-smog wicon'></i>",
-    };
   }
 
   static displayTodayTemp(units, container) {

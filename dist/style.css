@@ -34,7 +34,6 @@ body {
   height: 100vh;
   font-family: "Jost", sans-serif;
   font-size: 16px;
-  overflow: hidden;
 }
 
 a {
@@ -60,7 +59,7 @@ input {
 }
 
 #unit {
-  font-size: 30px;
+  font-size: 28px;
   font-family: "Roboto Mono", monospace;
   color: var(--font-white);
   transition: ease 0.3s;
@@ -145,6 +144,7 @@ input {
 .weather-container {
   z-index: 2;
   padding: 1.2rem;
+  margin-top: -2rem;
 }
 
 .heading {
@@ -329,14 +329,14 @@ input {
 /* TOGGLE SWITCH */
 #Toggle {
   position: absolute;
-  bottom: 3vh;
+  bottom: 2vh;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 3;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 12px 14px;
+  padding: 10px 12px;
 }
 
 .toggle {
@@ -382,6 +382,10 @@ input {
 .toggle__input:checked ~ .toggle__fill::after {
   transform: translateX(var(--height));
   z-index: 3;
+}
+
+.thin-txt {
+  font-weight: 300;
 }
 
 .fa-x {
