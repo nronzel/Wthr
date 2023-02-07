@@ -142,7 +142,6 @@ input {
 }
 
 .secondary-container {
-  border: 1px solid red;
   gap: 1.5rem;
   z-index: 3;
 }
@@ -156,7 +155,7 @@ input {
   color: var(--font-white);
   z-index: inherit;
   border: 1px solid pink;
-  padding: 12px;
+  padding: 1.5rem;
   gap: 8px;
 }
 
@@ -213,15 +212,30 @@ input {
   gap: 4px;
 }
 
-.daily-data {
-  font-size: var(--small-font);
+.daily-header {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.daily-data,
+.daily-data-header {
+  font-size: var(--x-small-font);
   font-weight: 300;
+  text-align: left;
+}
+
+.daily-data-header {
+  text-align: left;
+  font-weight: 200;
 }
 
 .daily-data-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 3vw;
+  grid-column-gap: 3vw;
 }
 
 .feels-like {
@@ -242,7 +256,6 @@ input {
   font-size: var(--small-font);
   color: hsl(0, 0%, 100%);
   font-weight: 200;
-  /* border-bottom: 1px solid rgba(255, 255, 255, 0.144); */
 }
 
 .wind-data-header {
@@ -312,11 +325,14 @@ input {
   font-weight: 300;
 }
 
-.date {
-  position: absolute;
+.daily-header {
+  position: relative;
   top: 0;
-  left: 50%;
-  transform: translate(-50%);
+}
+
+.date {
+  position: relative;
+  top: 0;
 }
 
 .condition {
@@ -335,10 +351,10 @@ input {
 }
 
 .glassify {
-  background: hsla(0, 0%, 100%, 0.024);
+  background: transparent;
   border-radius: 16px;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid hsla(0, 0%, 100%, 0.082);
 }
 
@@ -444,6 +460,7 @@ input {
 
 .wicon {
   max-width: 100%;
+  margin: -20px 0px;
 }
 
 .footer-text {
@@ -455,7 +472,6 @@ input {
 }
 
 footer {
-  /* height: 40px; */
   position: fixed;
   bottom: 0;
   z-index: 3;
@@ -523,10 +539,6 @@ footer {
   animation: fadeIn ease 1.5s;
 }
 
-.fade-out {
-  animation: fadeOut ease 1.5s;
-}
-
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -536,29 +548,21 @@ footer {
   }
 }
 
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opactiy: 0;
-  }
-}
-
 /* MEDIA */
 @media (max-width: 650px) {
   .weather-container {
     grid-template-columns: repeat(2, 1.5fr);
   }
-}
-
-@media (max-width: 500px) {
   .secondary-container {
     flex-flow: column;
   }
 
   .daily-container {
     flex-flow: row;
+  }
+
+  .wicon {
+    max-width: 65%;
   }
 }
 
