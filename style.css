@@ -136,12 +136,8 @@ input {
   border: none;
   outline: none;
 
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-drag: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
   pointer-events: none;
+  touch-action: none;
 }
 
 .background-container {
@@ -321,11 +317,12 @@ form {
 .header {
   position: relative;
   display: flex;
+  flex-shrink: 0;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
   z-index: 3;
-  height: 75px;
+  min-height: 55px;
   width: 50%;
 }
 
