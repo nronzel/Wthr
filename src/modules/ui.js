@@ -62,22 +62,26 @@ export default class UI {
       <p class="weather-data-header midweight">${day.condition}</p>
     </div>
     <div class="daily-data-container">
-      <p class="daily-data-header">Temp <span class="small-txt">${
-        day.unit
-      }</span></p>
-      <p class="daily-data">${day.temp}</p>
-      <p class="daily-data-header">Wind <span class="small-txt">${
-        day.windUnit
-      }</span></p>
-      <p class="daily-data">${day.wind}</p>
-      <p class="daily-data-header">Rain <span class="small-txt">%</span></p>
-      <p class="daily-data">${day.rain}</p>
-      <p class="daily-data-header">Humidity <span class="small-txt">%</span></p>
-      <p class="daily-data">${day.humidity}</p>
-      <p class="daily-data-header">Sunrise <span class="small-txt">AM</span></p>
-      <p class="daily-data">${day.sunrise.split(" ")[0]}</p>
-      <p class="daily-data-header">Sunset <span class="small-txt">PM</span></p>
-      <p class="daily-data">${day.sunset.split(" ")[0]}</p>
+      <p class="daily-data-header">Temp</p>
+      <p class="daily-data"><span class="small-txt">${day.unit}</span> ${
+      day.temp
+    }</p>
+      <p class="daily-data-header">Wind</p>
+      <p class="daily-data"><span class="small-txt">${day.windUnit}</span> ${
+      day.wind
+    }</p>
+      <p class="daily-data-header">Rain</p>
+      <p class="daily-data"><span class="small-txt">%</span> ${day.rain}</p>
+      <p class="daily-data-header">Humidity</p>
+      <p class="daily-data"><span class="small-txt">%</span> ${day.humidity}</p>
+      <p class="daily-data-header">Sunrise</p>
+      <p class="daily-data"><span class="small-txt">AM</span> ${
+        day.sunrise.split(" ")[0]
+      }</p>
+      <p class="daily-data-header">Sunset</p>
+      <p class="daily-data"><span class="small-txt">PM</span> ${
+        day.sunset.split(" ")[0]
+      }</p>
     </div>
     `;
 
@@ -238,7 +242,7 @@ export default class UI {
     toggle.addEventListener("change", UI.changeUnit);
 
     input.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") UI.submitBtnAction;
+      if (e.key === "Enter") UI.sub;
     });
 
     input.addEventListener("keydown", UI.showSubmitBtn);
