@@ -98,10 +98,14 @@ p {
 #Background1 {
   transition: opacity 1s ease-in-out;
   z-index: -1;
+  pointer-events: none;
+  touch-action: none;
 }
 
 #Background2 {
   z-index: -1;
+  pointer-events: none;
+  touch-action: none;
 }
 
 .background {
@@ -350,6 +354,8 @@ form {
   width: 100%;
   object-fit: cover;
   z-index: 1;
+  pointer-events: none;
+  touch-action: none;
 }
 
 .submit {
@@ -451,6 +457,7 @@ form {
 
 .wicon {
   max-width: 100%;
+  margin-bottom: -7px;
 }
 
 .footer-text {
