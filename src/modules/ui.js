@@ -4,8 +4,9 @@ export default class UI {
   static async displayData() {
     const unit = UI.getUnit();
     const data = await getData();
+    const daily = await UI.getDailyForecast();
 
-    UI.displayDailyData();
+    UI.displayDailyData(daily);
 
     UI.clearScreen();
     UI.setBgImage(data.current.condition.code);
@@ -43,8 +44,7 @@ export default class UI {
     UI.animateArrow(data);
   }
 
-  static async displayDailyData() {
-    let data = await UI.getDailyForecast();
+  static displayDailyData(data) {
     document.querySelector(".secondary-container").innerHTML = "";
     data.forEach((day) => UI.drawDailyCard(day));
   }
@@ -258,12 +258,11 @@ export default class UI {
 
   static submitBtnAction() {
     const input = document.getElementById("Zip");
-    const unit = document.getElementById("unit").textContent;
     document.body.setAttribute("data-last-zip", input.value);
     UI.clearInput();
     UI.hideSubmitBtn();
-    UI.displayData(unit);
-    UI.displayDailyData();
+    UI.displayData();
+    // UI.displayDailyData();
   }
 
   static hideSubmitBtn() {
