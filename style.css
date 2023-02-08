@@ -309,11 +309,12 @@ input {
 .header {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.7rem;
+  gap: 1rem;
   z-index: 3;
   height: 50px;
+  width: 50%;
 }
 
 .header > button {
@@ -415,9 +416,9 @@ input {
 
 /* TOGGLE SWITCH */
 #Toggle {
-  padding: 10px 12px;
+  /* padding: 10px 12px; */
   z-index: 3;
-  width: 100px;
+  padding-left: 5px;
   position: relative;
   top: 0;
 }
@@ -458,7 +459,7 @@ input {
 }
 
 .toggle__input:checked ~ .toggle__fill {
-  background: hsla(60, 6%, 17%, 0.663);
+  background: hsla(60, 38%, 16%, 0.851);
   z-index: 3;
 }
 
@@ -601,6 +602,12 @@ footer {
   .wicon {
     max-width: 65%;
     margin-top: 15px;
+  }
+}
+
+@media (max-width: 695px) {
+  .header {
+    width: auto;
   }
 }
 
