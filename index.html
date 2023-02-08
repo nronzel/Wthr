@@ -14,6 +14,7 @@
 <body>
 
   <div class="page-container">
+    <!-- HEADER -->
     <div class="header">
       <p class="logo">Wthrr</p>
       <form action="#" class="flex glassify">
@@ -28,19 +29,77 @@
         <p id="unit">F</p>
       </div>
     </div>
+
+    <!-- MAIN WEATHER DATA -->
     <div class="main-container">
       <div class="lds-ripple">
         <div></div>
         <div></div>
       </div>
     </div>
+
+    <!-- 24 HOUR FORECAST -->
+    <div class="hourly-container">
+      <div class="hourly-data-container">
+        <div class="hourly-row">
+          <div class="grid">
+            <p>Time</p>
+          </div>
+          <div class="grid"></div>
+          <div class="grid">
+            <p>Condition</p>
+          </div>
+          <div class="grid">
+            <p>Feels Like</p>
+          </div>
+          <div class="grid">
+            <p>Rain %</p>
+          </div>
+          <div class="grid">
+            <p>Humidity %</p>
+          </div>
+          <div class="grid">
+            <p>Wind Dir</p>
+          </div>
+          <div class="grid">
+            <p>Wind Speed</p>
+          </div>
+        </div>
+        <div class="hourly-row">
+          <div class="grid">
+            <p>00:00</p>
+          </div>
+          <div class="grid"><img class="wicon" src="https://cdn.weatherapi.com/weather/64x64/day/176.png"
+              alt="weather-icon"></div>
+          <div class="grid">
+            <p>Patchy rain possible</p>
+          </div>
+          <div class="grid">
+            <p>76</p>
+          </div>
+          <div class="grid">
+            <p>84</p>
+          </div>
+          <div class="grid">
+            <p>72</p>
+          </div>
+          <div class="grid">
+            <p>E</p>
+          </div>
+          <div class="grid">
+            <p>9.4</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 3 DAY FORECAST -->
     <div class="secondary-container flex">
       <div class="lds-ripple">
         <div></div>
         <div></div>
       </div>
     </div>
-    <!-- <div class="footer"> -->
+    <!-- FOOTER -->
     <footer>
       <div class="footer-content flex">
         <p class="footer-text">Copyright © 2023</p>
@@ -54,9 +113,12 @@
       </div>
     </footer>
   </div>
+
   <div class="overlay"></div>
+
   <img id="Background2" class="background" src="" alt="weather-conditions" draggable="false">
   <img id="Background1" class="background" src="./assets/imgs/default-grey.png" alt="default" draggable="false">
+
 </body>
 
 </html>
