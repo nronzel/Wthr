@@ -147,6 +147,10 @@ input {
   font-family: "Rubik", sans-serif;
 }
 
+form {
+  padding: 3px 14px;
+}
+
 .page-container {
   height: 100%;
   width: 100%;
@@ -247,6 +251,7 @@ input {
   align-items: center;
   justify-content: center;
   gap: 8px;
+  margin-top: 25px;
 }
 
 .daily-data,
@@ -263,7 +268,7 @@ input {
 
 .daily-data-container {
   display: grid;
-  grid-template-columns: 3fr 0.15fr;
+  grid-template-columns: 3fr 1fr;
   grid-column-gap: 3vw;
 }
 
@@ -313,7 +318,7 @@ input {
   align-items: center;
   gap: 1rem;
   z-index: 3;
-  height: 50px;
+  height: 75px;
   width: 50%;
 }
 
@@ -347,11 +352,6 @@ input {
 .region {
   color: var(--font-white);
   font-weight: 300;
-}
-
-.daily-header {
-  position: relative;
-  top: 0;
 }
 
 .date {
@@ -406,7 +406,6 @@ input {
   outline: none;
   cursor: pointer;
   color: var(--font-white);
-  padding: 12px;
 }
 
 .active {
@@ -498,7 +497,6 @@ input {
 
 .wicon {
   max-width: 100%;
-  margin: 5px -5px -25px -5px;
 }
 
 .footer-text {
@@ -522,12 +520,13 @@ footer {
 }
 
 /* RIPPLE */
+
 .lds-ripple {
   display: inline-block;
   position: relative;
   width: 80px;
   height: 80px;
-  top: 100px;
+  top: 0px;
 }
 
 .lds-ripple div {
@@ -598,11 +597,6 @@ footer {
   .daily-data-container {
     grid-template-columns: 2fr 1fr 2fr 1fr;
   }
-
-  .wicon {
-    max-width: 65%;
-    margin-top: 15px;
-  }
 }
 
 @media (max-width: 695px) {
@@ -617,11 +611,6 @@ footer {
   }
 
   .daily-data-container {
-    margin-top: 5px;
-  }
-
-  .wicon {
-    margin-bottom: -25px;
     margin-top: 5px;
   }
 }
