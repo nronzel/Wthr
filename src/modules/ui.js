@@ -238,7 +238,7 @@ export default class UI {
     toggle.addEventListener("change", UI.changeUnit);
 
     input.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") submit.click();
+      if (e.key === "Enter") UI.submitBtnAction;
     });
 
     input.addEventListener("keydown", UI.showSubmitBtn);
@@ -262,7 +262,6 @@ export default class UI {
     UI.clearInput();
     UI.hideSubmitBtn();
     UI.displayData();
-    // UI.displayDailyData();
   }
 
   static hideSubmitBtn() {
