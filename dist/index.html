@@ -12,108 +12,116 @@
 </head>
 
 <body>
-  <div class="background-container">
-    <img id="Background2" class="background" src="" alt="weather-conditions">
-    <img id="Background1" class="background" src="./assets/imgs/default-grey.png" alt="default">
-  </div>
-  <div class="header">
-    <p class="logo">Wthrr</p>
-    <!-- <button id="unit">F</button> -->
-    <input class="glassify" type="text" name="zip" id="Zip" placeholder="zip/city/airport">
-    <button class="submit"><i class="fas fa-check"></i></button>
-  </div>
-  <div class="main-container">
-    <div class="lds-ripple">
-      <div></div>
-      <div></div>
-    </div>
-  </div>
 
-  <div class="secondary-container flex">
-    <div class="daily-container glassify">
-      <p class="weather-data-header date">02/08</p>
-      <div class="daily-header">
-        <img class="wicon" src="https://cdn.weatherapi.com/weather/128x128/day/119.png" alt="test">
-        <p class="weather-data-header midweight">Cloudy</p>
-      </div>
-      <div class="daily-data-container">
-        <p class="daily-data-header">Temp</p>
-        <p class="daily-data">78 <span class="small-txt">F</span></p>
-        <p class="daily-data-header">Wind</p>
-        <p class="daily-data">12 <span class="small-txt">mph</span></p>
-        <p class="daily-data-header">Precip.</p>
-        <p class="daily-data">0 <span class="small-txt">in.</span></p>
-        <p class="daily-data-header">Humidity</p>
-        <p class="daily-data">50 <span class="small-txt">%</span></p>
-        <p class="daily-data-header">Sunrise</p>
-        <p class="daily-data">06:09</p>
-        <p class="daily-data-header">Sunset</p>
-        <p class="daily-data">07:01</p>
-      </div>
+  <div class="page-container">
+    <div class="header">
+      <p class="logo">Wthrr</p>
+      <input class="glassify" type="text" name="zip" id="Zip" placeholder="zip/city/airport">
+      <button class="submit"><i class="fas fa-check"></i></button>
     </div>
-    <div class="daily-container glassify">
-      <p class="weather-data-header date">02/09</p>
-      <div class="daily-header">
-        <img class="wicon" src="https://cdn.weatherapi.com/weather/128x128/day/119.png" alt="test">
-        <p class="weather-data-header midweight">Cloudy</p>
-      </div>
-      <div class="daily-data-container">
-        <p class="daily-data-header">Temp</p>
-        <p class="daily-data">78 <span class="small-txt">F</span></p>
-        <p class="daily-data-header">Wind</p>
-        <p class="daily-data">12 <span class="small-txt">mph</span></p>
-        <p class="daily-data-header">Precip.</p>
-        <p class="daily-data">0 <span class="small-txt">in.</span></p>
-        <p class="daily-data-header">Humidity</p>
-        <p class="daily-data">50 <span class="small-txt">%</span></p>
-        <p class="daily-data-header">Sunrise</p>
-        <p class="daily-data">06:09</p>
-        <p class="daily-data-header">Sunset</p>
-        <p class="daily-data">07:01</p>
-      </div>
-    </div>
-    <div class="daily-container glassify">
-      <p class="weather-data-header date">02/10</p>
-      <div class="daily-header">
-        <img class="wicon" src="https://cdn.weatherapi.com/weather/128x128/day/119.png" alt="test">
-        <p class="weather-data-header midweight">Cloudy</p>
-      </div>
-      <div class="daily-data-container">
-        <p class="daily-data-header">Temp</p>
-        <p class="daily-data">78 <span class="small-txt">F</span></p>
-        <p class="daily-data-header">Wind</p>
-        <p class="daily-data">12 <span class="small-txt">mph</span></p>
-        <p class="daily-data-header">Precip.</p>
-        <p class="daily-data">0 <span class="small-txt">in.</span></p>
-        <p class="daily-data-header">Humidity</p>
-        <p class="daily-data">50 <span class="small-txt">%</span></p>
-        <p class="daily-data-header">Sunrise</p>
-        <p class="daily-data">06:09</p>
-        <p class="daily-data-header">Sunset</p>
-        <p class="daily-data">07:01</p>
-      </div>
-    </div>
-  </div>
 
-  <div class="overlay"></div>
-  <footer class="flex-column">
-    <div id="Toggle" class="glassify flex">
+    <div id="Toggle" class="flex">
       <label class="toggle" for="myToggle">
         <input class="toggle__input" name="toggle" type="checkbox" id="myToggle">
         <div class="toggle__fill"></div>
       </label>
       <p id="unit">F</p>
     </div>
-    <div class="footer flex">
-      <p class="footer-text">Copyright © 2023</p>
-      <a class="github-logo" href="https://github.com/nronzel" target="_blank">
-        <i class="fab fa-github"></i>
-        <p class="footer-text"><a href="https://www.weatherapi.com/"><span class="thin-txt">weather by
-            </span>weatherapi.com</a></p>
-        <p class="footer-text"><a href="https://unsplash.com"><span class="thin-txt">photos by </span>unsplash</a></p>
-      </a>
+
+    <div class="main-container">
+      <div class="lds-ripple">
+        <div></div>
+        <div></div>
+      </div>
     </div>
-  </footer>
+
+    <div class="secondary-container flex">
+      <div class="daily-container glassify">
+        <p class="weather-data-header date">02/10</p>
+        <div class="daily-header">
+          <img class="wicon" src="https://cdn.weatherapi.com/weather/128x128/day/119.png" alt="test">
+          <p class="weather-data-header midweight">Cloudy</p>
+        </div>
+        <div class="daily-data-container">
+          <p class="daily-data-header">Temp <span class="small-txt">F</span></p>
+          <p class="daily-data">78</p>
+          <p class="daily-data-header">Wind <span class="small-txt">mph</span></p>
+          <p class="daily-data">12</p>
+          <p class="daily-data-header">Rain <span class="small-txt">%</span></p>
+          <p class="daily-data">0</p>
+          <p class="daily-data-header">Humidity <span class="small-txt">%</span></p>
+          <p class="daily-data">50</p>
+          <p class="daily-data-header">Sunrise <span class="small-txt">AM</span></p>
+          <p class="daily-data">06:09</p>
+          <p class="daily-data-header">Sunset <span class="small-txt">PM</span></p>
+          <p class="daily-data">07:01</p>
+        </div>
+      </div>
+      <div class="daily-container glassify">
+        <p class="weather-data-header date">02/10</p>
+        <div class="daily-header">
+          <img class="wicon" src="https://cdn.weatherapi.com/weather/128x128/day/119.png" alt="test">
+          <p class="weather-data-header midweight">Cloudy</p>
+        </div>
+        <div class="daily-data-container">
+          <p class="daily-data-header">Temp <span class="small-txt">F</span></p>
+          <p class="daily-data">78</p>
+          <p class="daily-data-header">Wind <span class="small-txt">mph</span></p>
+          <p class="daily-data">12</p>
+          <p class="daily-data-header">Rain <span class="small-txt">%</span></p>
+          <p class="daily-data">0</p>
+          <p class="daily-data-header">Humidity <span class="small-txt">%</span></p>
+          <p class="daily-data">50</p>
+          <p class="daily-data-header">Sunrise <span class="small-txt">AM</span></p>
+          <p class="daily-data">06:09</p>
+          <p class="daily-data-header">Sunset <span class="small-txt">PM</span></p>
+          <p class="daily-data">07:01</p>
+        </div>
+      </div>
+      <div class="daily-container glassify">
+        <p class="weather-data-header date">02/10</p>
+        <div class="daily-header">
+          <img class="wicon" src="https://cdn.weatherapi.com/weather/128x128/day/119.png" alt="test">
+          <p class="weather-data-header midweight">Cloudy</p>
+        </div>
+        <div class="daily-data-container">
+          <p class="daily-data-header">Temp <span class="small-txt">F</span></p>
+          <p class="daily-data">78</p>
+          <p class="daily-data-header">Wind <span class="small-txt">mph</span></p>
+          <p class="daily-data">12</p>
+          <p class="daily-data-header">Rain <span class="small-txt">%</span></p>
+          <p class="daily-data">0</p>
+          <p class="daily-data-header">Humidity <span class="small-txt">%</span></p>
+          <p class="daily-data">50</p>
+          <p class="daily-data-header">Sunrise <span class="small-txt">AM</span></p>
+          <p class="daily-data">06:09</p>
+          <p class="daily-data-header">Sunset <span class="small-txt">PM</span></p>
+          <p class="daily-data">07:01</p>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="footer"> -->
+    <footer>
+      <div class="footer-content flex">
+        <p class="footer-text">Copyright © 2023</p>
+        <a class="github-logo" href="https://github.com/nronzel" target="_blank">
+          <i class="fab fa-github"></i>
+          <p class="footer-text"><a href="https://www.weatherapi.com/"><span class="thin-txt">weather by
+              </span>weatherapi.com</a></p>
+          <p class="footer-text"><a href="https://unsplash.com"><span class="thin-txt">photos by </span>unsplash</a>
+          </p>
+        </a>
+      </div>
+    </footer>
+
+    <!-- </div> -->
+
+  </div>
+  <div class="overlay"></div>
+  <!-- <div class="background-container"> -->
+  <img id="Background2" class="background" src="" alt="weather-conditions">
+  <img id="Background1" class="background" src="./assets/imgs/default-grey.png" alt="default">
+  <!-- </div> -->
 </body>
 
 </html>

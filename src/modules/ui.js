@@ -44,11 +44,36 @@ export default class UI {
   }
 
   static async getDailyForecast() {
-    const forecast = await getDailyAndHourlyData();
-    const threeDayForecast = forecast.forecastday.slice(1);
+    const forecastRaw = await getDailyAndHourlyData();
+    const threeDayForecast = forecastRaw.forecastday.slice(1);
+    const forecastParsed = [];
 
-    console.log(threeDayForecast);
+    threeDayForecast.forEach((day) =>
+      forecastParsed.push(UI.#parseSingleDay(day))
+    );
+
+    console.log(forecastParsed);
   }
+
+  static #parseSingleDay(day) {
+    const current = day.day;
+    const unit = UI.getUnit();
+    const date = `${day.date.split("-")[1]}/${day.date.split("-")[2]}`;
+
+    const dailyData = {
+      date: date,
+      condition: current.condition.text,
+      temp: unit === "F" ? current.avgtemp_f : current.avgtemp_c,
+      wind: unit === "F" ? current.maxwind_mph : current.maxwind_kph,
+      rain: current.daily_chance_of_rain,
+      humidity: current.avghumidity,
+      sunrise: day.astro.sunrise,
+      sunset: day.astro.sunset,
+    };
+
+    return dailyData;
+  }
+
   static displayTodayTemp(units, container) {
     const todayTempContainer = document.createElement("div");
     const feelsLikeContainer = document.createElement("div");
@@ -287,7 +312,7 @@ export default class UI {
     let weatherCondition = UI.getWeatherCondition(weatherCode);
     const defaultBg = document.getElementById("Background1");
 
-    if (timeOfDay == "day") {
+    if (timeOfDay === "day") {
       let image = "";
       let bg = document.getElementById("Background2");
 
@@ -306,7 +331,7 @@ export default class UI {
       return image;
     } else if (timeOfDay == "night") {
       let image = "";
-      let bg = document.getElementById("Background");
+      let bg = document.getElementById("Background2");
 
       if (weatherCondition == "clear") image += nightImages.clearNight;
       if (weatherCondition == "partly-cloudy")
