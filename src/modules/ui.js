@@ -93,6 +93,8 @@ export default class UI {
     const threeDayForecast = forecastRaw.forecastday.slice(1);
     const forecastParsed = [];
 
+    console.log(forecastRaw);
+
     threeDayForecast.forEach((day) =>
       forecastParsed.push(UI.#parseSingleDay(day))
     );

@@ -131,6 +131,7 @@ p {
 
 form {
   padding: 3px 14px 3px 3px;
+  margin-top: 8px;
 }
 
 .page-container {
@@ -268,6 +269,27 @@ form {
 
 .wind-main-container > .weather-data-header {
   font-weight: 300;
+}
+
+/* Hourly Data */
+
+.hourly-container {
+  z-index: 3;
+}
+.hourly-data-container {
+  display: flex;
+  flex-flow: column;
+}
+
+.hourly-row {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header {
