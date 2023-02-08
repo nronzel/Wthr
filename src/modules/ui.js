@@ -33,7 +33,7 @@ export default class UI {
 
     const units = UI.setPropertyUnits(unit, data);
 
-    UI.displayTodayTemp(units, container);
+    UI.#displayTodayTemp(units, container);
     UI.displayWeatherStats(data, units, container);
     UI.displayWindStats(data, units, container);
 
@@ -53,6 +53,7 @@ export default class UI {
     );
 
     console.log(forecastParsed);
+    console.log(threeDayForecast);
   }
 
   static #parseSingleDay(day) {
@@ -74,7 +75,7 @@ export default class UI {
     return dailyData;
   }
 
-  static displayTodayTemp(units, container) {
+  static #displayTodayTemp(units, container) {
     const todayTempContainer = document.createElement("div");
     const feelsLikeContainer = document.createElement("div");
 
