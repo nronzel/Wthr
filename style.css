@@ -87,6 +87,9 @@ input {
   color: var(--font-white);
   font-weight: 300;
   font-size: 1.1rem;
+  background: transparent;
+  border: none;
+  outline: none;
 }
 
 #Zip::placeholder {
@@ -98,7 +101,9 @@ input {
 
 #Zip:focus,
 #Zip:active {
-  border: 1px solid rgba(255, 255, 255, 0.324);
+  /* border: 1px solid rgba(255, 255, 255, 0.324); */
+  border: none;
+  border-radius: 16px;
   background: rgba(0, 0, 0, 0.1);
   outline: none;
   text-align: center;
@@ -394,7 +399,13 @@ input {
 .submit {
   visibility: hidden;
   opacity: 0;
-  transition: ease-in 0.5s;
+  transition: ease-in 0.7s;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: var(--font-white);
+  padding: 12px;
 }
 
 .active {
@@ -481,7 +492,7 @@ input {
 }
 
 .fa-check {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .wicon {
