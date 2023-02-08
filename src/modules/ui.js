@@ -5,7 +5,7 @@ export default class UI {
     const unit = UI.getUnit();
     const data = await getData();
 
-    UI.getDailyForecast();
+    UI.displayDailyData();
 
     UI.clearScreen();
     UI.setBgImage(data.current.condition.code);
@@ -43,6 +43,47 @@ export default class UI {
     UI.animateArrow(data);
   }
 
+  static async displayDailyData() {
+    let data = await UI.getDailyForecast();
+    document.querySelector(".secondary-container").innerHTML = "";
+    data.forEach((day) => UI.drawDailyCard(day));
+  }
+
+  static drawDailyCard(day) {
+    const mainContainer = document.querySelector(".secondary-container");
+    const dailyContainer = document.createElement("div");
+
+    dailyContainer.classList.add("daily-container", "glassify");
+
+    dailyContainer.innerHTML = `
+    <p class="weather-data-header date">${day.date}</p>
+    <div class="daily-header">
+      <img class="wicon" src="https:${day.icon}" alt="weather-icon">
+      <p class="weather-data-header midweight">${day.condition}</p>
+    </div>
+    <div class="daily-data-container">
+      <p class="daily-data-header">Temp <span class="small-txt">${
+        day.unit
+      }</span></p>
+      <p class="daily-data">${day.temp}</p>
+      <p class="daily-data-header">Wind <span class="small-txt">${
+        day.windUnit
+      }</span></p>
+      <p class="daily-data">${day.wind}</p>
+      <p class="daily-data-header">Rain <span class="small-txt">%</span></p>
+      <p class="daily-data">${day.rain}</p>
+      <p class="daily-data-header">Humidity <span class="small-txt">%</span></p>
+      <p class="daily-data">${day.humidity}</p>
+      <p class="daily-data-header">Sunrise <span class="small-txt">AM</span></p>
+      <p class="daily-data">${day.sunrise.split(" ")[0]}</p>
+      <p class="daily-data-header">Sunset <span class="small-txt">PM</span></p>
+      <p class="daily-data">${day.sunset.split(" ")[0]}</p>
+    </div>
+    `;
+
+    mainContainer.append(dailyContainer);
+  }
+
   static async getDailyForecast() {
     const forecastRaw = await getDailyAndHourlyData();
     const threeDayForecast = forecastRaw.forecastday.slice(1);
@@ -52,8 +93,7 @@ export default class UI {
       forecastParsed.push(UI.#parseSingleDay(day))
     );
 
-    console.log(forecastParsed);
-    console.log(threeDayForecast);
+    return forecastParsed;
   }
 
   static #parseSingleDay(day) {
@@ -70,6 +110,9 @@ export default class UI {
       humidity: current.avghumidity,
       sunrise: day.astro.sunrise,
       sunset: day.astro.sunset,
+      icon: current.condition.icon,
+      unit: unit,
+      windUnit: unit === "F" ? "mph" : "kph",
     };
 
     return dailyData;
@@ -220,6 +263,7 @@ export default class UI {
     UI.clearInput();
     UI.hideSubmitBtn();
     UI.displayData(unit);
+    UI.displayDailyData();
   }
 
   static hideSubmitBtn() {
