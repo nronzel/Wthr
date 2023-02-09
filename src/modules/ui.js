@@ -269,7 +269,7 @@ export default class UI {
 
     todayTempContainer.innerHTML = `
     <i class="fas fa-temperature-half"></i>
-    <h1 class="current-temp">${units.currentTemp}${units.temp_unit}<h1>
+    <p class="current-temp">${units.currentTemp}${units.temp_unit}</p>
     `;
     feelsLikeContainer.innerHTML = `
     <p class="med-txt">FEELS LIKE</p>
