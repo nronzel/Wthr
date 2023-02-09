@@ -23,7 +23,7 @@
   /* responsive font sizes */
   /* clamp([value-min], [value-preferred], [value-max]); */
   --xx-small-font: clamp(10px, 1vw, 12px);
-  --small-table-font: clamp(14, 1vw, 18px);
+  --small-table-font: clamp(12px, 1vw, 18px);
   --x-small-font: clamp(16px, 1.25vw, 20px);
   --small-font: clamp(18px, 1.5vw, 26px);
   --medium-font: clamp(24px, 2vw, 30px);
@@ -377,6 +377,11 @@ form {
   font-weight: 200;
 }
 
+.smaller-txt {
+  font-size: var(--xx-small-font);
+  font-weight: 200;
+}
+
 .med-txt {
   font-size: var(--small-font);
 }
@@ -421,6 +426,7 @@ form {
   display: flex;
   opacity: 1;
   scale: 1;
+  visibility: visible;
 }
 
 /* DATA BUTTONS */

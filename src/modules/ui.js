@@ -5,8 +5,6 @@ export default class UI {
     const unit = UI.getUnit();
     const data = await getData();
 
-    UI.displayDailyData();
-
     UI.clearScreen();
     UI.setBgImage(data.current.condition.code);
 
@@ -173,19 +171,19 @@ export default class UI {
             <p>${hour.condition}</p>
           </div>
           <div class="grid">
-            <p>${hour.feelsLike} <span class="small-txt">${hour.unit}</span></p>
+            <p>${hour.feelsLike} <span class="smaller-txt">${hour.unit}</span></p>
           </div>
           <div class="grid">
-            <p>${hour.rain} <span class="small-txt">%</span></p>
+            <p>${hour.rain} <span class="smaller-txt">%</span></p>
           </div>
           <div class="grid">
-            <p>${hour.humidity} <span class="small-txt">%</span></p>
+            <p>${hour.humidity} <span class="smaller-txt">%</span></p>
           </div>
           <div class="grid">
             <p>${hour.windDir}</p>
           </div>
           <div class="grid">
-            <p>${hour.windSpeed} <span class="small-txt">${hour.windUnit}</span></p>
+            <p>${hour.windSpeed} <span class="smaller-txt">${hour.windUnit}</span></p>
           </div>
         </div>
     `;
@@ -376,7 +374,7 @@ export default class UI {
   }
 
   static setEventListeners() {
-    let input = document.getElementById("Zip");
+    const input = document.getElementById("Zip");
     const toggle = document.getElementById("myToggle");
     const nextTwentyFour = document.getElementById("hourly");
     const daily = document.getElementById("threeday");
@@ -386,7 +384,7 @@ export default class UI {
     toggle.addEventListener("change", UI.changeUnit);
 
     input.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") UI.sub;
+      if (e.key === "Enter") UI.submitBtnAction;
     });
 
     input.addEventListener("keydown", UI.showSubmitBtn);
@@ -406,10 +404,17 @@ export default class UI {
 
   static submitBtnAction() {
     const input = document.getElementById("Zip");
+    const hourly = document.querySelector(".hourly-container");
     document.body.setAttribute("data-last-zip", input.value);
     UI.clearInput();
     UI.hideSubmitBtn();
+    if (hourly.classList.contains("active")) {
+      UI.displayHourlyData();
+      UI.displayData();
+      return;
+    }
     UI.displayData();
+    UI.displayDailyData();
   }
 
   static hideSubmitBtn() {
