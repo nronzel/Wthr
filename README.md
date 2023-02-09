@@ -65,7 +65,7 @@ I made this app after initially making another app using openweathermap-api for 
 
 With WeatherAPI I found it much easier to work with and gives me better data, so I re-wrote the app into what this is. I wanted something that had a dynamic background image that changed based on the weather and current time of day. As a golfer, the more granular wind data is important to me and I wanted to keep the UI clean and minimalist.
 
-I plan on implementing tabs, one for daily (3 day) forecast, and one for hourly forecast for the next X hours (haven't decided how many yet, likely 24).
+This was mostly meant as a proof of concept to myself that I can envision a project, plan it out, implement it, and see it through until I feel it is finished. The code is kind of a mess, and I learned a lot throughout the process of the importance of writing a maintainable codebase.
 
 ## Credits
 
