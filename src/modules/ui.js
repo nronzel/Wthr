@@ -360,7 +360,7 @@ export default class UI {
 
     if (document.body.dataset.lastZip !== undefined)
       return document.body.dataset.lastZip;
-    if (input.value !== "") return input.textContent;
+    if (input.value !== "") return input.value;
 
     return "auto:ip";
   }
