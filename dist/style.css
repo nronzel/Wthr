@@ -24,11 +24,11 @@
   /* clamp([value-min], [value-preferred], [value-max]); */
   --xx-small-font: clamp(10px, 1vw, 12px);
   --small-table-font: clamp(12px, 1vw, 18px);
-  --x-small-font: clamp(16px, 1.25vw, 20px);
+  --x-small-font: clamp(14px, 1.25vw, 20px);
   --small-font: clamp(18px, 1.5vw, 26px);
   --medium-font: clamp(24px, 2vw, 30px);
   --large-font: clamp(32px, 2.25vw, 42px);
-  --x-large-font: clamp(60px, 3vw, 83px);
+  --x-large-font: clamp(55px, 3vw, 83px);
 }
 
 html {
@@ -183,7 +183,7 @@ form {
   z-index: inherit;
   padding: 1.5rem;
   transition: ease-in-out 0.5s;
-  width: 288px;
+  max-width: 340px;
 }
 
 .daily-container:hover {
