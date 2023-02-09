@@ -4,9 +4,8 @@ export default class UI {
   static async displayData() {
     const unit = UI.getUnit();
     const data = await getData();
-    const daily = await UI.getDailyForecast();
 
-    UI.displayDailyData(daily);
+    UI.displayDailyData();
 
     UI.clearScreen();
     UI.setBgImage(data.current.condition.code);
@@ -44,9 +43,17 @@ export default class UI {
     UI.animateArrow(data);
   }
 
-  static displayDailyData(data) {
+  static async displayDailyData() {
+    const daily = await UI.getDailyForecast();
+    const container = document.querySelector(".secondary-container");
+    const hourly = document.querySelector(".hourly-container");
+
+    container.classList.add("active");
+    hourly.firstChild.innerHTML = "";
+    hourly.classList.remove("active");
+
     document.querySelector(".secondary-container").innerHTML = "";
-    data.forEach((day) => UI.drawDailyCard(day));
+    daily.forEach((day) => UI.drawDailyCard(day));
   }
 
   static drawDailyCard(day) {
@@ -166,7 +173,7 @@ export default class UI {
             <p>${hour.condition}</p>
           </div>
           <div class="grid">
-            <p>${hour.feelsLike} ${hour.unit}</p>
+            <p>${hour.feelsLike} <span class="small-txt">${hour.unit}</span></p>
           </div>
           <div class="grid">
             <p>${hour.rain} <span class="small-txt">%</span></p>
@@ -178,7 +185,7 @@ export default class UI {
             <p>${hour.windDir}</p>
           </div>
           <div class="grid">
-            <p>${hour.windSpeed} ${hour.windUnit}</p>
+            <p>${hour.windSpeed} <span class="small-txt">${hour.windUnit}</span></p>
           </div>
         </div>
     `;
@@ -372,9 +379,10 @@ export default class UI {
     let input = document.getElementById("Zip");
     const toggle = document.getElementById("myToggle");
     const nextTwentyFour = document.getElementById("hourly");
+    const daily = document.getElementById("threeday");
 
     nextTwentyFour.addEventListener("click", UI.displayHourlyData);
-
+    daily.addEventListener("click", UI.displayDailyData);
     toggle.addEventListener("change", UI.changeUnit);
 
     input.addEventListener("keypress", (e) => {
