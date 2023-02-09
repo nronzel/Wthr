@@ -238,7 +238,6 @@ export default class UI {
   }
 
   static setEventListeners() {
-    let submit = document.querySelector(".submit");
     let input = document.getElementById("Zip");
     const toggle = document.getElementById("myToggle");
     toggle.addEventListener("change", UI.changeUnit);
