@@ -28,7 +28,7 @@
   --small-font: clamp(18px, 1.5vw, 26px);
   --medium-font: clamp(24px, 2vw, 30px);
   --large-font: clamp(32px, 2.25vw, 42px);
-  --x-large-font: clamp(72px, 4vw, 83px);
+  --x-large-font: clamp(60px, 3vw, 83px);
 }
 
 html {
@@ -47,6 +47,10 @@ body {
   color: var(--font-white);
 }
 
+h1 {
+  cursor: default;
+}
+
 a {
   text-decoration: none;
   color: var(--font-white);
@@ -54,6 +58,7 @@ a {
 
 p {
   text-align: center;
+  cursor: default;
 }
 
 #unit {
@@ -176,6 +181,11 @@ form {
   flex-flow: column;
   z-index: inherit;
   padding: 1.5rem;
+  transition: ease-in-out 0.5s;
+}
+
+.daily-container:hover {
+  transform: scale(1.1);
 }
 
 .weather-container {
@@ -432,6 +442,10 @@ form {
 /* DATA BUTTONS */
 .data-buttons {
   z-index: 3;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
 }
 .data-btn {
   color: var(--font-white);
@@ -439,6 +453,12 @@ form {
   font-family: inherit;
   padding: 8px 12px;
   font-weight: 200;
+  background: hsla(0, 0%, 100%, 0.249);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid hsla(0, 0%, 100%, 0.082);
+  cursor: pointer;
 }
 
 /* TOGGLE SWITCH */
