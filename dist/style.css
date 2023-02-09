@@ -183,6 +183,7 @@ form {
   z-index: inherit;
   padding: 1.5rem;
   transition: ease-in-out 0.5s;
+  width: 288px;
 }
 
 .daily-container:hover {
@@ -229,6 +230,7 @@ form {
   justify-content: center;
   gap: 8px;
   margin-top: 25px;
+  word-wrap: break-word;
 }
 
 .daily-data,
