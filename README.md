@@ -24,6 +24,10 @@ If you find this app useful, or just like the design, consider giving this repo 
 
 ✔️ Search by zip, city/state, airport code, ip-address, UK & Canada postal code, & more!
 
+✔️ Show the next 3 forecast
+
+✔️ Show the next 24 hours by the hour
+
 ## How To Use
 
 Visit the [Live Preview](https://nronzel.github.io/Wthr/) of the site, courtesy of Github Pages.
@@ -50,7 +54,7 @@ These parameters are directly from the WeatherApi documentation.
 ## Upcoming
 
 - error tooltip if entered search term is invalid
-- hourly forecast
+- ~~hourly forecast~~ DONE!
 - ~~daily 3 day forecast~~ DONE!
 - more responsive for larger screens (I'd like the main data to spread out more on a larger screen)
 - potentially search suggestion as the API allows it, haven't checked it out much yet but will look into implementing
