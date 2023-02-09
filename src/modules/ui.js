@@ -63,25 +63,25 @@ export default class UI {
     </div>
     <div class="daily-data-container">
       <p class="daily-data-header">Temp</p>
-      <p class="daily-data"><span class="small-txt">${day.unit}</span> ${
-      day.temp
-    }</p>
+      <p class="daily-data">${day.temp} <span class="small-txt">${
+      day.unit
+    }</span></p>
       <p class="daily-data-header">Wind</p>
-      <p class="daily-data"><span class="small-txt">${day.windUnit}</span> ${
-      day.wind
-    }</p>
+      <p class="daily-data">${day.wind} <span class="small-txt">${
+      day.windUnit
+    }</span></p>
       <p class="daily-data-header">Rain</p>
-      <p class="daily-data"><span class="small-txt">%</span> ${day.rain}</p>
+      <p class="daily-data">${day.rain} <span class="small-txt">%</span></p>
       <p class="daily-data-header">Humidity</p>
-      <p class="daily-data"><span class="small-txt">%</span> ${day.humidity}</p>
+      <p class="daily-data">${day.humidity} <span class="small-txt">%</span></p>
       <p class="daily-data-header">Sunrise</p>
-      <p class="daily-data"><span class="small-txt">AM</span> ${
+      <p class="daily-data">${
         day.sunrise.split(" ")[0]
-      }</p>
+      } <span class="small-txt">AM</span></p>
       <p class="daily-data-header">Sunset</p>
-      <p class="daily-data"><span class="small-txt">PM</span> ${
+      <p class="daily-data">${
         day.sunset.split(" ")[0]
-      }</p>
+      } <span class="small-txt">PM</span></p>
     </div>
     `;
 
