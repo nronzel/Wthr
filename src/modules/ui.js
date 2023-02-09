@@ -5,9 +5,6 @@ export default class UI {
     const unit = UI.getUnit();
     const data = await getData();
     const daily = await UI.getDailyForecast();
-    const hourly = await UI.getHourlyForecast();
-
-    UI.displayHourlyData(hourly);
 
     UI.displayDailyData(daily);
 
@@ -111,10 +108,48 @@ export default class UI {
     return [today, tomorrow];
   }
 
-  static displayHourlyData(data) {
-    let nextTwentyFour = UI.getHourlyData(data);
+  static async displayHourlyData() {
+    const secondaryContainer = document.querySelector(".secondary-container");
+    const hourlyContainer = document.querySelector(".hourly-container");
+    secondaryContainer.classList.remove("active");
+    hourlyContainer.classList.add("active");
+
+    const rawData = await UI.getHourlyForecast();
+    let nextTwentyFour = UI.getHourlyData(rawData);
+
+    UI.clearHourlyContainer();
+
     nextTwentyFour.forEach((hour) => UI.addHourlyRow(hour));
-    console.log(nextTwentyFour);
+  }
+
+  static clearHourlyContainer() {
+    const container = document.querySelector(".hourly-data-container");
+    container.innerHTML = `
+    <div class="hourly-row">
+    <div class="grid">
+      <!-- <p>Time</p> -->
+    </div>
+    <div class="grid"></div>
+    <div class="grid">
+      <!-- <p>Condition</p> -->
+    </div>
+    <div class="grid">
+      <p>Feels Like</p>
+    </div>
+    <div class="grid">
+      <p>Rain</p>
+    </div>
+    <div class="grid">
+      <p>Humidity</p>
+    </div>
+    <div class="grid">
+      <p>Wind Dir</p>
+    </div>
+    <div class="grid">
+      <p>Wind Speed</p>
+    </div>
+  </div>
+    `;
   }
 
   static addHourlyRow(hour) {
@@ -336,6 +371,10 @@ export default class UI {
   static setEventListeners() {
     let input = document.getElementById("Zip");
     const toggle = document.getElementById("myToggle");
+    const nextTwentyFour = document.getElementById("hourly");
+
+    nextTwentyFour.addEventListener("click", UI.displayHourlyData);
+
     toggle.addEventListener("change", UI.changeUnit);
 
     input.addEventListener("keypress", (e) => {
@@ -405,12 +444,21 @@ export default class UI {
   static changeUnit() {
     const toggle = document.getElementById("myToggle");
     const unit = document.getElementById("unit");
+    const hourly = document.querySelector(".hourly-container");
 
     if (toggle.checked) {
       unit.textContent = "C";
+      if (hourly.classList.contains("active")) {
+        UI.displayHourlyData();
+        return;
+      }
       UI.displayData(unit);
     } else {
       unit.textContent = "F";
+      if (hourly.classList.contains("active")) {
+        UI.displayHourlyData();
+        return;
+      }
       UI.displayData(unit);
     }
   }
