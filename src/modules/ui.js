@@ -5,6 +5,9 @@ export default class UI {
     const unit = UI.getUnit();
     const data = await getData();
     const daily = await UI.getDailyForecast();
+    const hourly = await UI.getHourlyForecast();
+
+    UI.displayHourlyData(hourly);
 
     UI.displayDailyData(daily);
 
@@ -93,13 +96,106 @@ export default class UI {
     const threeDayForecast = forecastRaw.forecastday.slice(1);
     const forecastParsed = [];
 
-    console.log(forecastRaw);
-
     threeDayForecast.forEach((day) =>
       forecastParsed.push(UI.#parseSingleDay(day))
     );
 
     return forecastParsed;
+  }
+
+  // HOURLY DATA
+  static async getHourlyForecast() {
+    const forecastRaw = await getDailyAndHourlyData();
+    const today = forecastRaw.forecastday[0].hour;
+    const tomorrow = forecastRaw.forecastday[1].hour;
+    return [today, tomorrow];
+  }
+
+  static displayHourlyData(data) {
+    let nextTwentyFour = UI.getHourlyData(data);
+    nextTwentyFour.forEach((hour) => UI.addHourlyRow(hour));
+    console.log(nextTwentyFour);
+  }
+
+  static addHourlyRow(hour) {
+    const row = document.createElement("div");
+    const container = document.querySelector(".hourly-data-container");
+    row.classList.add("hourly-row");
+    row.innerHTML = `
+    <div class="grid">
+            <p>${hour.hour}</p>
+          </div>
+          <div class="grid"><img class="wicon" src="https:${hour.icon}"
+              alt="weather-icon"></div>
+          <div class="grid">
+            <p>${hour.condition}</p>
+          </div>
+          <div class="grid">
+            <p>${hour.feelsLike} ${hour.unit}</p>
+          </div>
+          <div class="grid">
+            <p>${hour.rain} <span class="small-txt">%</span></p>
+          </div>
+          <div class="grid">
+            <p>${hour.humidity} <span class="small-txt">%</span></p>
+          </div>
+          <div class="grid">
+            <p>${hour.windDir}</p>
+          </div>
+          <div class="grid">
+            <p>${hour.windSpeed} ${hour.windUnit}</p>
+          </div>
+        </div>
+    `;
+
+    container.append(row);
+  }
+
+  static getHourlyData(data) {
+    let nextDayData = UI.#getNextTwentyFourHours(data);
+    let parsedData = [];
+
+    nextDayData.forEach((hour) => parsedData.push(UI.#parseSingleHour(hour)));
+
+    return parsedData;
+  }
+
+  static #getNextTwentyFourHours(data) {
+    let nextDayData;
+
+    const todayHour = UI.getTimeHour();
+    const restOfToday = data[0].slice(todayHour);
+    const tomorrow = data[1];
+
+    let count = restOfToday.length;
+
+    if (count < 24) {
+      let remaining = 24 - count;
+      let remainingHourData = tomorrow.slice(0, remaining);
+      nextDayData = [].concat(restOfToday, remainingHourData);
+      count = nextDayData.length;
+    }
+    return nextDayData;
+  }
+
+  static #parseSingleHour(hour) {
+    const unit = UI.getUnit();
+    const time = hour.time.split(" ")[1];
+
+    const hourlyData = {
+      hour: time,
+      icon: hour.condition.icon,
+      condition: hour.condition.text,
+      feelsLike: unit === "F" ? hour.feelslike_f : hour.feelslike_c,
+      rain: hour.chance_of_rain,
+      humidity: hour.humidity,
+      windDir: hour.wind_dir,
+      windSpeed: unit === "F" ? hour.wind_mph : hour.wind_kph,
+      unit: unit,
+      windUnit: unit === "F" ? "mph" : "kph",
+    };
+
+    return hourlyData;
   }
 
   static #parseSingleDay(day) {
