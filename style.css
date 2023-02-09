@@ -396,6 +396,17 @@ form {
   opacity: 1;
 }
 
+/* DATA BUTTONS */
+.data-buttons {
+  z-index: 3;
+}
+.data-btn {
+  color: var(--font-white);
+  font-size: var(--x-small-font);
+  padding: 8px 12px;
+  font-weight: 100;
+}
+
 /* TOGGLE SWITCH */
 #Toggle {
   z-index: 3;
