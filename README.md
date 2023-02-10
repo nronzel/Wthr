@@ -24,7 +24,7 @@ If you find this app useful, or just like the design, consider giving this repo 
 
 ✔️ Search by zip, city/state, airport code, ip-address, UK & Canada postal code, & more!
 
-✔️ Show the next 3 forecast
+✔️ Show 3 day daily forecast (free tier limit)
 
 ✔️ Show the next 24 hours by the hour
 
