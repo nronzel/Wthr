@@ -1,4 +1,4 @@
-# Wthr
+# Wthrr
 
 My minimalistic approach to a useful and stylish weather app. Written in vanilla Javascript.
 
