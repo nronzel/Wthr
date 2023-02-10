@@ -402,17 +402,24 @@ export default class UI {
     btn.addEventListener("click", UI.submitBtnAction);
   }
 
-  static submitBtnAction() {
+  static submitBtnAction(e) {
+    e.preventDefault();
+
     const input = document.getElementById("Zip");
     const hourly = document.querySelector(".hourly-container");
-    document.body.setAttribute("data-last-zip", input.value);
-    UI.clearInput();
-    UI.hideSubmitBtn();
+
+    if (input.value !== "")
+      document.body.setAttribute("data-last-zip", input.value);
+
     if (hourly.classList.contains("active")) {
       UI.displayHourlyData();
       UI.displayData();
       return;
     }
+
+    UI.clearInput();
+    UI.hideSubmitBtn();
+
     UI.displayData();
     UI.displayDailyData();
   }
