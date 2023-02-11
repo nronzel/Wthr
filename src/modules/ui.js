@@ -202,7 +202,6 @@ export default class UI {
 
   static #getNextTwentyFourHours(data) {
     let nextDayData;
-
     const todayHour = UI.getTimeHour();
     const restOfToday = data[0].slice(todayHour);
     const tomorrow = data[1];
@@ -212,7 +211,7 @@ export default class UI {
     if (count < 24) {
       let remaining = 24 - count;
       let remainingHourData = tomorrow.slice(0, remaining);
-      nextDayData = [].concat(restOfToday, remainingHourData);
+      nextDayData = [...restOfToday, ...remainingHourData];
       count = nextDayData.length;
     }
     return nextDayData;
