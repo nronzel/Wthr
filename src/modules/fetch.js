@@ -2,7 +2,6 @@ import UI from "./ui.js";
 
 export async function getData() {
   let location = UI.getLocation();
-  // if (location === undefined) zip = "auto:ip";
 
   const url = `https://api.weatherapi.com/v1/current.json?key=9efd72673aa64db4961180618232901&q=${location}&aqi=no`;
 
@@ -19,9 +18,7 @@ export async function getData() {
 
 export async function getDailyAndHourlyData() {
   let location = UI.getLocation();
-  // if (location === undefined) location = "auto:ip";
 
-  // gets forecast for next 3 days with daily, hourly, and astr info
   const url = `https://api.weatherapi.com/v1/forecast.json?key=9efd72673aa64db4961180618232901&q=${location}&days=4&aqi=no`;
 
   const response = await fetch(url, { mode: "cors" });
