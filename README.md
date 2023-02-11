@@ -27,7 +27,7 @@ Some things I learned from creating this project:
 
 If you find this app useful, or just like the design, consider giving this repo a star!
 
-## Table of Contents (Optional)
+## Table of Contents
 
 If your README is long, add a table of contents to make it easy for users to find what they need.
 
