@@ -2,7 +2,7 @@
   "name": "wthr",
   "version": "1.0.0",
   "description": "",
-  "main": "/src/index.js",
+  "private": true,
   "scripts": {
     "start": "npx webpack --watch",
     "gh-deploy": "git push origin :gh-pages && git subtree push --prefix dist origin gh-pages",
