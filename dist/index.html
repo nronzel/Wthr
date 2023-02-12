@@ -1,83 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./assets/font-awesome/css/all.css" />
+    <script type="module" src="./main.js"></script>
+    <title>Weather App</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="./assets/font-awesome/css/all.css">
-  <script type="module" src="./main.js"></script>
-  <title>Weather App</title>
-</head>
-
-<body>
-
-  <div class="page-container">
-    <!-- HEADER -->
-    <div class="header">
-      <p class="logo">Wthrr</p>
-      <form action="#" class="flex glassify">
-        <input type="text" name="zip" id="Zip" placeholder="zip/city/airport">
-        <button class="submit"><i class="fas fa-check"></i></button>
-      </form>
-      <div id="Toggle" class="flex">
-        <label class="toggle" for="myToggle">
-          <input class="toggle__input" name="toggle" type="checkbox" id="myToggle">
-          <div class="toggle__fill"></div>
-        </label>
-        <p id="unit">F</p>
+  <body>
+    <div class="page-container">
+      <!-- HEADER -->
+      <div class="header">
+        <p class="logo">Wthrr</p>
+        <form action="#" class="flex glassify">
+          <input
+            type="text"
+            name="zip"
+            id="Zip"
+            placeholder="zip/city/airport"
+          />
+          <button class="submit"><i class="fas fa-check"></i></button>
+        </form>
+        <div id="Toggle" class="flex">
+          <label class="toggle" for="myToggle">
+            <input
+              class="toggle__input"
+              name="toggle"
+              type="checkbox"
+              id="myToggle"
+            />
+            <div class="toggle__fill"></div>
+          </label>
+          <p id="unit">F</p>
+        </div>
       </div>
+
+      <!-- MAIN WEATHER DATA -->
+      <div class="main-container">
+        <div class="lds-ripple">
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+
+      <div class="data-buttons">
+        <button id="threeday" class="data-btn glassify">2 Day</button>
+        <button id="hourly" class="data-btn glassify">24 Hour</button>
+      </div>
+
+      <!-- 24 Hour Forecast -->
+      <div class="hourly-container glassify">
+        <div class="hourly-data-container"></div>
+      </div>
+
+      <!-- 3 DAY FORECAST -->
+      <div class="secondary-container active">
+        <div class="lds-ripple">
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <footer>
+        <div class="footer-content flex">
+          <p class="footer-text">Copyright © 2023</p>
+          <a
+            class="github-logo"
+            href="https://github.com/nronzel"
+            target="_blank"
+          >
+            <i class="fab fa-github"></i>
+            <p class="footer-text">
+              <a href="https://www.weatherapi.com/"
+                ><span class="thin-txt">weather by </span>weatherapi.com</a
+              >
+            </p>
+            <p class="footer-text">
+              <a href="https://unsplash.com"
+                ><span class="thin-txt">photos by </span>unsplash</a
+              >
+            </p>
+          </a>
+        </div>
+      </footer>
     </div>
 
-    <!-- MAIN WEATHER DATA -->
-    <div class="main-container">
-      <div class="lds-ripple">
-        <div></div>
-        <div></div>
-      </div>
-    </div>
+    <div class="overlay"></div>
 
-    <div class="data-buttons">
-      <button id="threeday" class="data-btn glassify">3 Day</button>
-      <button id="hourly" class="data-btn glassify">24 Hour</button>
-    </div>
-
-    <!-- 24 Hour Forecast -->
-    <div class="hourly-container glassify">
-      <div class="hourly-data-container">
-
-      </div>
-    </div>
-
-    <!-- 3 DAY FORECAST -->
-    <div class="secondary-container active">
-      <div class="lds-ripple">
-        <div></div>
-        <div></div>
-      </div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer>
-      <div class="footer-content flex">
-        <p class="footer-text">Copyright © 2023</p>
-        <a class="github-logo" href="https://github.com/nronzel" target="_blank">
-          <i class="fab fa-github"></i>
-          <p class="footer-text"><a href="https://www.weatherapi.com/"><span class="thin-txt">weather by
-              </span>weatherapi.com</a></p>
-          <p class="footer-text"><a href="https://unsplash.com"><span class="thin-txt">photos by </span>unsplash</a>
-          </p>
-        </a>
-      </div>
-    </footer>
-  </div>
-
-  <div class="overlay"></div>
-
-  <img id="Background2" class="background" src="" alt="weather-conditions" draggable="false">
-  <img id="Background1" class="background" src="./assets/imgs/default-grey.png" alt="default" draggable="false">
-
-</body>
-
+    <img
+      id="Background2"
+      class="background"
+      src=""
+      alt="weather-conditions"
+      draggable="false"
+    />
+    <img
+      id="Background1"
+      class="background"
+      src="./assets/imgs/default-grey.png"
+      alt="default"
+      draggable="false"
+    />
+  </body>
 </html>

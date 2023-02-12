@@ -53,7 +53,7 @@ If you find this app useful, or just like the design, consider giving this repo 
 
 ✔️ Search by zip, city/state, airport code, ip-address, UK & Canada postal code, & more!
 
-✔️ Show 3 day daily forecast (WeatherAPI free tier limit)
+✔️ Show next 2 day daily forecast (WeatherAPI free tier limit)
 
 ✔️ Show the next 24 hours by the hour
 
@@ -86,7 +86,7 @@ These parameters are directly from the WeatherApi documentation.
 
 - error tooltip if entered search term is invalid
 - ~~hourly forecast~~ DONE!
-- ~~daily 3 day forecast~~ DONE!
+- ~~daily 2 day forecast~~ DONE! (can only get 2 days into future, the 3 days included in free tier include today as day 0)
 - more responsive for larger screens (I'd like the main data to spread out more on a larger screen)
 - potentially search suggestion as the API allows it, haven't checked it out much yet but will look into implementing
 
