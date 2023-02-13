@@ -27,6 +27,8 @@ Some things I learned from creating this project:
 
 If you find this app useful, or just like the design, consider giving this repo a star!
 
+Thanks!
+
 ## Table of Contents
 
 - [Features](#features)
